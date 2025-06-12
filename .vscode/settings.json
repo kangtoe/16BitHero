@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Uni-tato.sln"
+    "dotnet.defaultSolution": "16BitHero.sln"
 }
