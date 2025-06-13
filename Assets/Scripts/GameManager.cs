@@ -5,22 +5,22 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using System;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoSingleton<GameManager>
 {
-    public static GameManager instance;
-
-
-    [Header(" Actions ")]
+    [Header("Actions")]
     public static Action onGamePaused;
     public static Action onGameResumed;
 
-    private void Awake()
+    [Header("for debug")]
+    [SerializeField] PlayerController playerController;
+    public PlayerController PlayerController
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
+        get {
+            if (!playerController) playerController = FindObjectOfType<PlayerController>();
+            return playerController;
+        }
     }
+
 
     // Start is called before the first frame update
     void Start()
