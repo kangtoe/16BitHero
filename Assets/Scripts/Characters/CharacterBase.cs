@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -24,6 +25,12 @@ public abstract class CharacterBase : MonoBehaviour
     [Header(" Actions ")]
     public static Action<int, Vector2, bool> onDamageTaken;
     public static Action<Vector2> onDeath;
+
+    #region Knockback
+    protected bool isKnockback = false;
+    protected Coroutine knockbackCoroutine;
+    protected Vector2 knockbackDirection;
+    #endregion
 
     protected virtual void Awake()
     {
@@ -55,28 +62,43 @@ public abstract class CharacterBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected virtual void Move()
+    public virtual void Knockback(Vector2 direction)
     {
-        rig.velocity = moveDirection * moveSpeed * Time.fixedDeltaTime;
+        if (knockbackCoroutine != null)
+            StopCoroutine(knockbackCoroutine);
+            
+        knockbackCoroutine = StartCoroutine(KnockbackCoroutine(direction));
+    }
+
+    protected virtual IEnumerator KnockbackCoroutine(Vector2 direction, float knockbackPower = 10f, float knockbackDuration = 0.2f)
+    {
+        isKnockback = true;
+        float elapsed = 0f;
+
+        while (elapsed < knockbackDuration)
+        {
+            elapsed += Time.deltaTime;
+            float power = knockbackPower * (1f - (elapsed / knockbackDuration));
+            rig.velocity = direction * power;
+            yield return null;
+        }
+
+        rig.velocity = Vector2.zero;
+        isKnockback = false;
+    }
+
+    protected virtual void Move(Vector2 vel)
+    {         
+        if (isKnockback) return;
         
-        if (animator != null)
-            animator.SetBool("bMove", rig.velocity.magnitude > 0);
+        rig.MovePosition(rig.position + vel);
+                
+        animator?.SetBool("bMove", vel.magnitude > 0);
 
         // 이동 방향에 따라 스프라이트 뒤집기
-        if (rig.velocity.x != 0)
+        if (vel.x != 0)
         {
-            SetDirection(Mathf.Sign(rig.velocity.x));
+            transform.localScale = new Vector3(Mathf.Sign(vel.x), 1, 1);
         }
-    }
-
-    protected void SetDirection(float direction)
-    {
-        transform.localScale = new Vector3(direction, 1, 1);
-    }
-
-    protected void FlipTowards(Vector2 targetPosition)
-    {
-        float direction = Mathf.Sign(targetPosition.x - transform.position.x);
-        SetDirection(direction);
     }
 } 

@@ -15,8 +15,7 @@ public class PlayerCharacter : CharacterBase
     }
 
     private void FixedUpdate()
-    {
-        moveDirection = playerJoystick.GetMoveVector();
-        Move();
+    {        
+        Move(playerJoystick.GetMoveVector().normalized * moveSpeed * Time.fixedDeltaTime);
     }
 }

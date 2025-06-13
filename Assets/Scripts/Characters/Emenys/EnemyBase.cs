@@ -2,29 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
 public class EnemyBase : CharacterBase
 {
+    #region References
     protected PlayerCharacter Player => GameManager.Instance.PlayerController;
+    #endregion
 
+    #region Spawn Settings
     [Header(" Spawn Sequence Related ")]
     [SerializeField] protected SpriteRenderer spawnIndicator;
-    protected bool hasSpawned;
+    protected bool hasSpawned = true; // true for debug
+    #endregion
 
-    [Header(" Effects ")]
-    [SerializeField] protected ParticleSystem deathParticles;
-
+    #region Attack Settings
     [Header(" Attack ")]
     [SerializeField] protected int damage;
     [SerializeField] protected float attackFrequency;
-    [SerializeField] protected Collider2D attackTrigger;
     protected float attackDelay;
-    protected float attackTimer;
-    protected bool isPlayerInRange;
+    protected float attackCooldown;
+    #endregion
 
-    [Header(" DEBUG ")]
-    [SerializeField] protected bool gizmos;
+    #region Effects
+    [Header(" Effects ")]
+    [SerializeField] protected ParticleSystem deathParticles;
+    #endregion
 
-    // Start is called before the first frame update
+    Vector2 LookDir => (Player.transform.position - transform.position).normalized;
+    bool isPlayerInRange = false;
+
+    #region Unity Lifecycle
     protected override void Start()
     {
         base.Start();
@@ -37,27 +44,29 @@ public class EnemyBase : CharacterBase
         }
 
         attackDelay = 1f / attackFrequency;
-        StartSpawnSequence();
+        attackCooldown = 0f;
+        //StartSpawnSequence();
     }
 
     protected virtual void Update()
     {
-        if (!CanAttack())
-            return;
+        if (!isActive()) return;            
 
-        if(attackTimer < attackDelay) 
-            attackTimer += Time.deltaTime;        
+        MoveToPlayer(Time.deltaTime);
 
-        FollowPlayer();
-        FlipTowards(Player.CenterPos);
+        if(attackCooldown > 0f) attackCooldown -= Time.deltaTime;         
+        else
+        {
+            if(attackCooldown <= 0f && isPlayerInRange)
+            {  
+                attackCooldown = attackDelay;
+                Attack();
+            }
+        }                        
     }
+    #endregion
 
-    // Update is called once per frame
-    protected bool CanAttack()
-    {
-        return spriteRenderer.enabled;
-    }
-
+    #region Spawn Logic
     private void StartSpawnSequence()
     {
         SetVisibility(false);
@@ -80,40 +89,48 @@ public class EnemyBase : CharacterBase
         spriteRenderer.enabled = visible;
         characterCollider.enabled = visible;
     }
+    #endregion
 
-    protected virtual void TryAttack()
+    #region Attack Logic
+    protected bool isActive()
     {
-        if (attackTimer >= attackDelay)
-        {
-            attackTimer = 0;
-            Attack();
-        }
+        return spriteRenderer.enabled && hasSpawned;
     }
 
     protected virtual void Attack()
-    {
+    {        
+        Debug.Log("Attack");
         Player.TakeDamage(damage);
+        Player.Knockback(LookDir);
     }
+    #endregion
 
+    #region Movement Logic
+    protected void MoveToPlayer(float deltaTime)
+    {
+        if((Player.transform.position - transform.position).magnitude < 0.5f) return;
+
+        Vector2 direction = (Player.transform.position - transform.position).normalized;        
+        Move(direction * moveSpeed * deltaTime);
+    }
+    #endregion
+
+    #region Death Logic
     protected override void Die()
     {
         onDeath?.Invoke(transform.position);
-        if (deathParticles != null)
+        if (deathParticles)
             Instantiate(deathParticles, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }
+    #endregion
 
-    protected void FollowPlayer()
-    {
-        Vector2 direction = (Player.transform.position - transform.position).normalized;
-        moveDirection = direction;
-        Move();
-    }
-
+    
+    #region Trigger Events
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other == Player.gameObject)
-            TryAttack();
+        isPlayerInRange = other.gameObject == Player.gameObject;        
     }
+    #endregion
 }

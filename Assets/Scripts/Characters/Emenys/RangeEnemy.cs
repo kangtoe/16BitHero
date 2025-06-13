@@ -7,48 +7,43 @@ public class RangeEnemy : EnemyBase
     [Header(" Range Attack Elements ")]
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private BulletPool bulletPool;
+    public BulletPool BulletPool => bulletPool;
 
     [Header(" Range Attack Settings ")]
     [SerializeField] private int bulletDamage;
     [SerializeField] private float rangeAttackFrequency;
     [SerializeField] private float rangeAttackRadius;
     private float rangeAttackDelay;
-    private float rangeAttackTimer;
+    private float rangeAttackCooldown;
+
+    float DistanceToPlayer => Vector2.Distance(transform.position, Player.transform.position);
+    bool IsCloseEnough => DistanceToPlayer <= rangeAttackRadius;
 
     protected override void Start()
     {
         base.Start();
         rangeAttackDelay = 1f / rangeAttackFrequency;
-        rangeAttackTimer = rangeAttackDelay;
+        rangeAttackCooldown = 0f;
     }
 
     protected override void Update()
     {
-        if (!CanAttack())
-            return;
-
-        CheckRangeAttack();
+        if (!isActive()) return;
+            
+        if(IsCloseEnough) TryRangeAttack();
+        else MoveToPlayer(Time.deltaTime);        
     }
-
-    private void CheckRangeAttack()
-    {
-        float distanceToPlayer = Vector2.Distance(transform.position, Player.CenterPos);
-
-        if (distanceToPlayer > rangeAttackRadius)
-            FollowPlayer();
-        else
-            TryRangeAttack();
-    }
-
+    
     private void TryRangeAttack()
     {
-        rangeAttackTimer += Time.deltaTime;
-
-        if(rangeAttackTimer >= rangeAttackDelay)
+        if(rangeAttackCooldown > 0f)
         {
-            rangeAttackTimer = 0;
-            Shoot();
+            rangeAttackCooldown -= Time.deltaTime;
+            return;
         }
+
+        rangeAttackCooldown = rangeAttackDelay;
+        Shoot();
     }
 
     private void Shoot()
@@ -60,16 +55,8 @@ public class RangeEnemy : EnemyBase
         bulletInstance.Shoot(bulletDamage, direction);
     }
 
-    public void ReleaseBullet(EnemyBullet bullet)
-    {
-        bulletPool.ReleaseBullet(bullet);
-    }
-
     private void OnDrawGizmos()
     {
-        if (!gizmos)
-            return;
-
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, rangeAttackRadius);
     }
