@@ -91,7 +91,7 @@ public abstract class CharacterBase : MonoBehaviour
     {         
         if (isKnockback) return;
         
-        rig.MovePosition(rig.position + vel);
+        rig.velocity = vel;
                 
         animator?.SetBool("bMove", vel.magnitude > 0);
 
