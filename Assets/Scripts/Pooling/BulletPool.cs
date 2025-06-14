@@ -3,12 +3,34 @@ using UnityEngine.Pool;
 
 public class BulletPool : MonoBehaviour
 {
-    [SerializeField] private EnemyBullet bulletPrefab;
-    private ObjectPool<EnemyBullet> bulletPool;
+    [SerializeField] private Bullet bulletPrefab;
+    private ObjectPool<Bullet> bulletPool;
 
     private void Awake()
     {
-        bulletPool = new ObjectPool<EnemyBullet>(
+        Bullet CreateBullet()
+        {
+            Bullet bullet = Instantiate(bulletPrefab);
+            bullet.gameObject.SetActive(false);
+            return bullet;
+        }
+
+        void OnGetBullet(Bullet bullet)
+        {
+            bullet.gameObject.SetActive(true);
+        }
+
+        void OnReleaseBullet(Bullet bullet)
+        {
+            bullet.gameObject.SetActive(false);
+        }
+
+        void OnDestroyBullet(Bullet bullet)
+        {
+            Destroy(bullet.gameObject);
+        }
+
+        bulletPool = new ObjectPool<Bullet>(
             CreateBullet,
             OnGetBullet,
             OnReleaseBullet,
@@ -16,40 +38,18 @@ public class BulletPool : MonoBehaviour
         );
     }
 
-    private EnemyBullet CreateBullet()
+    private void OnDestroy()
     {
-        EnemyBullet bullet = Instantiate(bulletPrefab);
-        bullet.gameObject.SetActive(false);
-        return bullet;
+        bulletPool.Dispose();
     }
-
-    private void OnGetBullet(EnemyBullet bullet)
-    {
-        bullet.gameObject.SetActive(true);
-    }
-
-    private void OnReleaseBullet(EnemyBullet bullet)
-    {
-        bullet.gameObject.SetActive(false);
-    }
-
-    private void OnDestroyBullet(EnemyBullet bullet)
-    {
-        Destroy(bullet.gameObject);
-    }
-
-    public EnemyBullet GetBullet()
+    
+    public Bullet GetBullet()
     {
         return bulletPool.Get();
     }
 
-    public void ReleaseBullet(EnemyBullet bullet)
+    public void ReleaseBullet(Bullet bullet)
     {
         bulletPool.Release(bullet);
-    }
-
-    private void OnDestroy()
-    {
-        bulletPool.Dispose();
     }
 } 

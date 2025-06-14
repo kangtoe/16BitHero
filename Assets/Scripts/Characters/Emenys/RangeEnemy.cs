@@ -50,9 +50,9 @@ public class RangeEnemy : EnemyBase
     {
         Vector2 direction = (Player.CenterPos - (Vector2)shootingPoint.position).normalized;
 
-        EnemyBullet bulletInstance = bulletPool.GetBullet();
-        bulletInstance.Configure(this);
-        bulletInstance.Shoot(bulletDamage, direction);
+        Bullet bulletInstance = bulletPool.GetBullet();
+        bulletInstance.SetBulletPool(bulletPool);
+        bulletInstance.Init(bulletDamage, direction);
     }
 
     private void OnDrawGizmos()
