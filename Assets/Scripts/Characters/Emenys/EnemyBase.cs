@@ -35,7 +35,7 @@ public class EnemyBase : CharacterBase
     protected override void Start()
     {
         base.Start();
-        health = maxHealth;    
+        CurrHealth = maxHealth;    
 
         if (Player == null)
         {
@@ -131,6 +131,14 @@ public class EnemyBase : CharacterBase
     private void OnTriggerStay2D(Collider2D other)
     {
         isPlayerInRange = other.gameObject == Player.gameObject;        
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject == Player.gameObject)
+        {
+            isPlayerInRange = false;
+        }
     }
     #endregion
 }

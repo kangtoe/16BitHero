@@ -1,28 +1,40 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 public abstract class CharacterBase : MonoBehaviour
 {
-    [Header(" Components ")]
-    protected Rigidbody2D rig;
-    protected Animator animator;
-    protected SpriteRenderer spriteRenderer;
+    [Header("Components")]
+    [SerializeField]protected Rigidbody2D rig;
     [SerializeField] protected Collider2D characterCollider;
+    [SerializeField]protected Animator animator;
+    [SerializeField]protected SpriteRenderer spriteRenderer;
+    
 
-    [Header(" Health ")]
+    [Header("Health")]
     [SerializeField] protected int maxHealth = 10;
-    protected int health;
+    protected int CurrHealth{
+        get{
+            return currHealth;
+        }
+        set{
+            currHealth = value;
+            if(healthBar) healthBar.fillAmount = (float)currHealth / maxHealth;
+            if(healthText) healthText.text = $"{currHealth}/{maxHealth}";
+        }
+    }
+    [SerializeField] protected int currHealth;
+    [SerializeField] protected Image healthBar;
+    [SerializeField] protected Text healthText;
 
-    [Header(" Movement ")]
+    [Header("Movement")]
     [SerializeField] protected float moveSpeed = 1f;
     protected Vector2 moveDirection;
 
-    [Header(" Actions ")]
+    [Header("Actions")]
     public static Action<int, Vector2, bool> onDamageTaken;
     public static Action<Vector2> onDeath;
 
@@ -35,24 +47,24 @@ public abstract class CharacterBase : MonoBehaviour
     protected virtual void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         characterCollider = GetComponent<Collider2D>();
+        animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     protected virtual void Start()
     {
-        health = maxHealth;
+        CurrHealth = maxHealth;
     }
 
     public virtual void TakeDamage(int damage, bool isCriticalHit = false)
     {
-        int realDamage = Mathf.Min(damage, health);
-        health -= realDamage;
+        int realDamage = Mathf.Min(damage, CurrHealth);
+        CurrHealth -= realDamage;
 
         onDamageTaken?.Invoke(damage, transform.position, isCriticalHit);
 
-        if (health <= 0)
+        if (CurrHealth <= 0)
             Die();
     }
 
@@ -98,7 +110,7 @@ public abstract class CharacterBase : MonoBehaviour
         // 이동 방향에 따라 스프라이트 뒤집기
         if (vel.x != 0)
         {
-            transform.localScale = new Vector3(Mathf.Sign(vel.x), 1, 1);
+            spriteRenderer.transform.localScale = new Vector3(Mathf.Sign(vel.x), 1, 1);
         }
     }
 } 
