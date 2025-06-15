@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour//, IPlayerStatsDependency
+public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
 {
     [field: SerializeField] public WeaponDataSO WeaponData { get; private set; }
 

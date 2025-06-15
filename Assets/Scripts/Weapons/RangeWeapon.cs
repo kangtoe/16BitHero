@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using System;
 
-public class RangeWeapon : Weapon
+public class RangeWeapon : WeaponBase
 {
     [Header(" Elements ")]
     [SerializeField] Bullet bulletPrefab;

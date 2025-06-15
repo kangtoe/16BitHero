@@ -9,8 +9,8 @@ public class WeaponManager : MonoBehaviour
     [Header("Weapon Settings")]
     [SerializeField] private float weaponRadius = 1f; // 무기들이 배치될 원의 반지름
 
-    public Weapon Weapon { get; private set; }
-    private List<Weapon> weapons = new List<Weapon>();
+    public WeaponBase Weapon { get; private set; }
+    private List<WeaponBase> weapons = new List<WeaponBase>();
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class WeaponManager : MonoBehaviour
     public void ArrangeExistingWeapons()
     {
         // 자식 오브젝트에서 모든 Weapon 컴포넌트를 찾습니다
-        Weapon[] existingWeapons = GetComponentsInChildren<Weapon>();
+        WeaponBase[] existingWeapons = GetComponentsInChildren<WeaponBase>();
         
         // 기존 리스트 초기화
         weapons.Clear();
@@ -35,9 +35,9 @@ public class WeaponManager : MonoBehaviour
         Debug.Log($"기존 무기 {weapons.Count}개를 배치했습니다.");
     }
 
-    public void AssignWeapon(Weapon weapon, int weaponLevel)
+    public void AssignWeapon(WeaponBase weapon, int weaponLevel)
     {
-        Weapon newWeapon = Instantiate(weapon, transform);
+        WeaponBase newWeapon = Instantiate(weapon, transform);
         newWeapon.transform.localPosition = Vector3.zero;
         newWeapon.transform.localRotation = Quaternion.identity;
         

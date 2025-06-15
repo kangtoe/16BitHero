@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeWeapon : Weapon
+public class MeleeWeapon : WeaponBase
 {
     [Header(" Elements ")]
     [SerializeField] CapsuleCollider2D hitCollider;
