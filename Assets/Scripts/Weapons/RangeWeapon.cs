@@ -32,8 +32,7 @@ public class RangeWeapon : WeaponBase
 
         void OnGetBullet(Bullet bullet)
         {
-            //bullet.Reload();
-            bullet.transform.position = firePoint.position;
+            //bullet.Reload();            
             bullet.gameObject.SetActive(true);
         }
 
@@ -67,7 +66,8 @@ public class RangeWeapon : WeaponBase
         int damage = GetDamage(out bool isCriticalHit);
 
         Bullet bullet = bulletPool.Get();
-        bullet.Init(targetMask, damage, transform.right, bulletSpeed, isCriticalHit);        
+        bullet.transform.position = firePoint.position;
+        bullet.Init(targetMask, damage, firePoint.right, bulletSpeed, isCriticalHit);        
 
         onBulletShot?.Invoke();        
     }
