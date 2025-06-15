@@ -39,6 +39,8 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
 
     protected Vector3 startLocalPosition;
     protected Quaternion startLocalRotation;
+
+    [SerializeField] protected CharacterBase owner;
     protected CharacterBase target;
 
     protected void Awake()
@@ -97,26 +99,30 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
         {
             targetVector = (target.CenterPos - (Vector2)transform.position).normalized;
             transform.right = targetVector;
+
+            // 무기가 90도 이상 회전했을 때 스프라이트 반전 및 회전 보정
+            float angle = Vector2.SignedAngle(Vector2.right, transform.right);
+            shouldFlip = angle > 90 || angle < -90;
+
+            // 회전 보정
+            if (shouldFlip)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, angle + 180);
+            } 
         }
+        else
+        {
+            shouldFlip = owner.IsFlipped;                        
+            transform.right = Vector3.Lerp(transform.right, targetVector, deltaTime * 10);
+        }        
 
-        transform.right = Vector3.Lerp(transform.right, targetVector, deltaTime * 10);
-
-        // 무기가 90도 이상 회전했을 때 스프라이트 반전 및 회전 보정
-        float angle = Vector2.SignedAngle(Vector2.right, transform.right);
-        shouldFlip = angle > 90 || angle < -90;
-        
         // 스프라이트 반전
         transform.localScale = new Vector3(
-            Mathf.Abs(transform.localScale.x) * (shouldFlip ? -1 : 1),
-            transform.localScale.y,
-            transform.localScale.z
-        );
+                Mathf.Abs(transform.localScale.x) * (shouldFlip ? -1 : 1),
+                transform.localScale.y,
+                transform.localScale.z
+            );
 
-        // 회전 보정
-        if (shouldFlip)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, angle + 180);
-        }
     }
 
     protected CharacterBase GetClosestTarget(float range)

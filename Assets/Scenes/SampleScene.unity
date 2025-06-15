@@ -343,6 +343,7 @@ MonoBehaviour:
   damage: 1
   attackDelay: 1
   level: 0
+  owner: {fileID: 1710743569}
   hitCollider: {fileID: 1944888162}
 --- !u!1 &140708551
 GameObject:
@@ -12597,6 +12598,7 @@ MonoBehaviour:
   damage: 1
   attackDelay: 1
   level: 0
+  owner: {fileID: 1710743569}
   bulletPrefab: {fileID: 2649885531228156523, guid: c5a2b5d73d593e3469ac743a5b6f670d, type: 3}
   firePoint: {fileID: 1675761386}
   bulletSpeed: 10
