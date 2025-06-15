@@ -35,6 +35,8 @@ public abstract class CharacterBase : MonoBehaviour
     [Header("Movement")]
     [SerializeField] protected float moveSpeed = 1f;
     protected Vector2 moveDirection;
+    protected bool isFlipped;
+    public bool IsFlipped => isFlipped;
 
     [Header("Actions")]
     public static Action<int, Vector2, bool> onDamageTaken;
@@ -112,7 +114,8 @@ public abstract class CharacterBase : MonoBehaviour
         // 이동 방향에 따라 스프라이트 뒤집기
         if (vel.x != 0)
         {
-            spriteRenderer.transform.localScale = new Vector3(Mathf.Sign(vel.x), 1, 1);
+            isFlipped = vel.x < 0;
+            spriteRenderer.transform.localScale = new Vector3(isFlipped ? -1 : 1, 1, 1);
         }
     }
 } 
