@@ -53,7 +53,7 @@ public abstract class Weapon : MonoBehaviour//, IPlayerStatsDependency
         // audioSource.Play();
     }
 
-    protected void AutoAim()
+    protected void AutoAim(float deltaTime)
     {    
         Vector2 targetVector = Vector3.right;
 
@@ -63,7 +63,7 @@ public abstract class Weapon : MonoBehaviour//, IPlayerStatsDependency
             transform.right = targetVector;
         }
 
-        transform.right = Vector3.Lerp(transform.right, targetVector, Time.deltaTime);
+        transform.right = Vector3.Lerp(transform.right, targetVector, deltaTime * 10);
     }
 
     protected CharacterBase GetClosestTarget(float range)

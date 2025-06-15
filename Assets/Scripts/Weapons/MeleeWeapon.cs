@@ -29,15 +29,15 @@ public class MeleeWeapon : Weapon
         switch (state)
         {
             case State.Idle:       
-                target = GetClosestTarget(range);
-                if(target) AutoAim();                     
+                if(attackCooldown > 0) attackCooldown -= Time.deltaTime;
+                AutoAim(Time.deltaTime);
 
-                if (attackCooldown <= 0)
-                {
+                target = GetClosestTarget(range);
+                if(target && attackCooldown <= 0)
+                {                                         
                     attackCooldown = attackDelay;
                     StartAttack();
-                }
-                else attackCooldown -= Time.deltaTime;                
+                }                         
                 break;
 
             case State.OnAttack:                
@@ -61,8 +61,8 @@ public class MeleeWeapon : Weapon
 
      IEnumerator ThrustIE(float thrustDistance = 1f,float thrustDuration = 0.1f, float returnDuration = 0.2f)
         {            
-            Vector3 start = startLocalPosition;
-            Vector3 target = startLocalPosition + Vector3.right * thrustDistance;
+            Vector3 start = hitCollider.transform.localPosition;
+            Vector3 target = start + Vector3.right * thrustDistance;
 
             // 찌르기 전진
             bool forwardDone = false;
@@ -88,8 +88,9 @@ public class MeleeWeapon : Weapon
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (((1 << collision.gameObject.layer) & targetMask) == 0) return;
         CharacterBase target = collision.GetComponent<CharacterBase>();
-        if(!target) return;
+        if(!target) return;        
         if (damagedCharacters.Contains(target)) return;
 
         int damage = GetDamage(out bool isCriticalHit);
