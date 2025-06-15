@@ -1,55 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Bullet : MonoBehaviour
 {
     [Header(" Elements ")]
-    private Rigidbody2D rig;
-    private Collider2D projectileCollider;
-    private BulletPool pool;
+    Rigidbody2D rig;
+    Collider2D projectileCollider;
+    ObjectPool<Bullet> pool;
 
     [Header(" Settings ")]
-    [SerializeField] private float moveSpeed;
-    private int damage;
+    LayerMask targetMask;    
+    int damage;
+    bool isCriticalHit;
+    float lifetime = 5f;
 
-    private void Awake()
+    void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
         projectileCollider = GetComponent<Collider2D>();
     }
 
-    public void SetBulletPool(BulletPool pool)
+    public void SetBulletPool(ObjectPool<Bullet> pool)
     {
         this.pool = pool;
     }
 
-    public void Init(int damage, Vector2 direction)
+    public void Init(LayerMask targetMask, int damage, Vector2 direction, float moveSpeed, bool isCriticalHit)
     {
+        this.targetMask = targetMask;
         this.damage = damage;
         transform.right = direction;
         rig.velocity = direction * moveSpeed;
+        this.isCriticalHit = isCriticalHit;
         gameObject.SetActive(this);
+
+        projectileCollider.enabled = true;
+
+        // lifetime 설정           
+        Invoke(nameof(OnHit), lifetime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        var Player = GameManager.Instance.PlayerController;
-        if(other.gameObject == Player.gameObject)
-        {
-            LeanTween.cancel(gameObject);
+        if (((1 << other.gameObject.layer) & targetMask) == 0) return;
+        CharacterBase target = other.GetComponent<CharacterBase>();
+        if(!target) return;                
+        
+        target.TakeDamage(damage, isCriticalHit);
+        projectileCollider.enabled = false;
 
-            Player.TakeDamage(damage);
-            this.projectileCollider.enabled = false;
-
-            OnHit();
-        }
+        OnHit();        
     }
 
     public void OnHit()
     {        
-        pool.ReleaseBullet(this);
-        gameObject.SetActive(false);
+        CancelInvoke(nameof(OnHit));     
+        pool.Release(this);
     }
 }

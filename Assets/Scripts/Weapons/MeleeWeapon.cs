@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
-    enum State
-    {
-        Idle,
-        OnAttack
-    }
-
-    State state;
-
     [Header(" Elements ")]
     [SerializeField] CapsuleCollider2D hitCollider;
 
@@ -23,59 +15,35 @@ public class MeleeWeapon : Weapon
         state = State.Idle;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void TryAttack()
     {
-        switch (state)
-        {
-            case State.Idle:       
-                if(attackCooldown > 0) attackCooldown -= Time.deltaTime;
-                target = GetClosestTarget(range);
-                AutoAim(Time.deltaTime);                
-                if(target && attackCooldown <= 0)
-                {                                         
-                    attackCooldown = attackDelay;
-                    StartAttack();
-                }                         
-                break;
+        base.TryAttack();
 
-            case State.OnAttack:                
-                break;
-        }
-
-        if(target) Debug.DrawLine(transform.position, target.transform.position, Color.red);
-    }
-
-    void StartAttack()
-    {
-        if(state == State.OnAttack) return;
         damagedCharacters.Clear();
-
         hitCollider.enabled = true;
-        state = State.OnAttack;
-                
-        PlayAttackSound();
+        state = State.OnProcess;
+                        
         StartCoroutine(ThrustIE(range));
     }
 
      IEnumerator ThrustIE(float thrustDistance = 1f,float thrustDuration = 0.1f, float returnDuration = 0.2f)
-        {            
-            Vector3 start = hitCollider.transform.localPosition;
-            Vector3 target = start + Vector3.right * thrustDistance;
+    {            
+        Vector3 start = hitCollider.transform.localPosition;
+        Vector3 target = start + Vector3.right * thrustDistance;
 
-            // 찌르기 전진
-            bool forwardDone = false;
-            LeanTween.moveLocal(hitCollider.gameObject, target, thrustDuration)
-                .setEase(LeanTweenType.easeOutQuad)
-                .setOnComplete(() => forwardDone = true);
+        // 찌르기 전진
+        bool forwardDone = false;
+        LeanTween.moveLocal(hitCollider.gameObject, target, thrustDuration)
+            .setEase(LeanTweenType.easeOutQuad)
+            .setOnComplete(() => forwardDone = true);
 
-            yield return new WaitUntil(() => forwardDone);
+        yield return new WaitUntil(() => forwardDone);
 
-            // 복귀
-            LeanTween.moveLocal(hitCollider.gameObject, start, returnDuration)
-                .setEase(LeanTweenType.easeInQuad)
-                .setOnComplete(() => EndAttack());            
-        }
+        // 복귀
+        LeanTween.moveLocal(hitCollider.gameObject, start, returnDuration)
+            .setEase(LeanTweenType.easeInQuad)
+            .setOnComplete(() => EndAttack());            
+    }
 
     private void EndAttack()
     {

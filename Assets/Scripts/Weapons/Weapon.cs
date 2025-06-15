@@ -27,6 +27,13 @@ public abstract class Weapon : MonoBehaviour//, IPlayerStatsDependency
     [Header("Audio")]
     protected AudioSource audioSource;
 
+    protected enum State
+    {
+        Idle,
+        OnProcess
+    }
+    protected State state;
+
     protected Vector3 startLocalPosition;
     protected Quaternion startLocalRotation;
     protected CharacterBase target;
@@ -42,6 +49,32 @@ public abstract class Weapon : MonoBehaviour//, IPlayerStatsDependency
 
         startLocalPosition = transform.localPosition;
         startLocalRotation = transform.localRotation;
+    }
+
+    protected virtual void Update()
+    {
+        switch (state)
+        {
+            case State.Idle:       
+                if(attackCooldown > 0) attackCooldown -= Time.deltaTime;
+                target = GetClosestTarget(range);
+                AutoAim(Time.deltaTime);                
+                if(target && attackCooldown <= 0)
+                {                                         
+                    attackCooldown = attackDelay;
+                    TryAttack();
+                }                         
+                break;
+
+            case State.OnProcess:                
+                break;
+        }        
+    }
+
+    protected virtual void TryAttack()
+    {
+        if(state == State.OnProcess) return;
+        PlayAttackSound();
     }
 
     protected void PlayAttackSound()
@@ -109,4 +142,17 @@ public abstract class Weapon : MonoBehaviour//, IPlayerStatsDependency
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+    
+    // public override void UpdateStats(PlayerStatsManager playerStatsManager)
+    // {
+    //     ConfigureStats();
+
+    //     damage = Mathf.RoundToInt(damage * (1 + playerStatsManager.GetStatValue(Stat.Attack) / 100));
+    //     attackDelay /= 1 + (playerStatsManager.GetStatValue(Stat.AttackSpeed) / 100);
+
+    //     criticalChance = Mathf.RoundToInt(criticalChance * (1 + playerStatsManager.GetStatValue(Stat.CriticalChance) / 100));
+    //     criticalPercent += playerStatsManager.GetStatValue(Stat.CriticalPercent);
+
+    //     range += playerStatsManager.GetStatValue(Stat.Range) / 10;
+    // }
 }
