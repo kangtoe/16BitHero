@@ -7,6 +7,8 @@ using System.Collections;
 [RequireComponent(typeof(CapsuleCollider2D))]
 public abstract class CharacterBase : MonoBehaviour
 {
+    public Vector2 CenterPos => characterCollider.bounds.center;
+
     [Header("Components")]
     [SerializeField]protected Rigidbody2D rig;
     [SerializeField] protected Collider2D characterCollider;
