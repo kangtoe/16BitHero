@@ -30,9 +30,8 @@ public class MeleeWeapon : Weapon
         {
             case State.Idle:       
                 if(attackCooldown > 0) attackCooldown -= Time.deltaTime;
-                AutoAim(Time.deltaTime);
-
                 target = GetClosestTarget(range);
+                AutoAim(Time.deltaTime);                
                 if(target && attackCooldown <= 0)
                 {                                         
                     attackCooldown = attackDelay;

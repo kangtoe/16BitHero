@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager1 : MonoBehaviour
+public class WeaponManager : MonoBehaviour
 {
+    [SerializeField]CharacterBase character;
+
     [Header("Weapon Settings")]
     [SerializeField] private float weaponRadius = 1f; // 무기들이 배치될 원의 반지름
 
@@ -54,15 +56,15 @@ public class WeaponManager1 : MonoBehaviour
         }
     }
 
-    private void SetWeaponPositions(int weaponCount, float radius)
+    private void SetWeaponPositions(int weaponCount, float radius, float angleOffset = 0)
     {
         if (weaponCount <= 0) return;
 
         float angleStep = 360f / weaponCount;
         for (int i = 0; i < weaponCount; i++)
         {
-            float angle = i * angleStep * Mathf.Deg2Rad;
-            Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
+            float angle = (angleOffset + i * angleStep) * Mathf.Deg2Rad;
+            Vector3 offset = character.CenterPos + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
             weapons[i].transform.localPosition = offset;
             
             // 무기가 바깥쪽을 향하도록 회전
