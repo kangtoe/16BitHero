@@ -27,10 +27,9 @@ public class EnemyBase : CharacterBase
     [Header(" Effects ")]
     [SerializeField] protected ParticleSystem deathParticles;
     #endregion
-
-    protected float DistanceToPlayer => Vector2.Distance(transform.position, Player.transform.position);
+    
     protected Vector2 LookDir => (Player.transform.position - transform.position).normalized;
-    bool isPlayerInRange = false;
+    bool isPlayerInAttackArea = false;
 
     #region Unity Lifecycle
     protected override void Start()
@@ -58,7 +57,7 @@ public class EnemyBase : CharacterBase
         if(attackCooldown > 0f) attackCooldown -= Time.deltaTime;         
         else
         {
-            if(attackCooldown <= 0f && isPlayerInRange)
+            if(attackCooldown <= 0f && isPlayerInAttackArea)
             {  
                 attackCooldown = attackDelay;
                 Attack();
@@ -102,14 +101,15 @@ public class EnemyBase : CharacterBase
     {        
         Debug.Log("Attack");
         Player.TakeDamage(damage);
-        Player.Knockback(LookDir);
+        //Player.Knockback(LookDir);
     }
     #endregion
 
     #region Movement Logic
     protected void MoveToPlayer(float deltaTime, float moveSpeed)
     {
-        if((Player.transform.position - transform.position).magnitude < 0.5f) return;
+        bool isCloseEnough = (Player.transform.position - transform.position).magnitude < 0.5f;
+        if(isCloseEnough) moveSpeed = 0f;
 
         Vector2 direction = (Player.transform.position - transform.position).normalized;        
         Move(direction * moveSpeed * deltaTime);
@@ -131,14 +131,14 @@ public class EnemyBase : CharacterBase
     #region Trigger Events
     private void OnTriggerStay2D(Collider2D other)
     {
-        isPlayerInRange = other.gameObject == Player.gameObject;        
+        isPlayerInAttackArea = other.gameObject == Player.gameObject;        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject == Player.gameObject)
         {
-            isPlayerInRange = false;
+            isPlayerInAttackArea = false;
         }
     }
     #endregion

@@ -7,20 +7,22 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
     [field: SerializeField] public WeaponDataSO WeaponData { get; private set; }
 
     [Header("Settings")]
-    [SerializeField] protected float range;
+    [SerializeField] protected LayerMask targetMask;    
+    [SerializeField] protected float range = 1f;
     public float Range => range;
-    [SerializeField] protected LayerMask targetMask;
 
     [Header("Attack")]
-    [SerializeField] protected int damage;
-    [SerializeField] protected float attackDelay;
+    [SerializeField] protected int damage = 1;
+    [SerializeField] protected float attackDelay = 1f;
     public float AttackDelay => attackDelay;
-
     protected float attackCooldown;
 
+    [Header("Knockback")]
+    [SerializeField] protected float knockback = 0f;
+
     [Header("Critical")]
-    protected int criticalChance;
-    protected float criticalPercent;
+    [SerializeField] protected int criticalChance = 0;
+    [SerializeField] protected float criticalDamageMultiplier = 1.5f;
 
     [Header("Level")]
     [SerializeField] int level = 0;
@@ -160,7 +162,7 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
         if (Random.Range(0, 101) <= criticalChance)
         {
             isCriticalHit = true;
-            return Mathf.RoundToInt(damage * criticalPercent);
+            return Mathf.RoundToInt(damage * criticalDamageMultiplier);
         }
 
         return damage;
