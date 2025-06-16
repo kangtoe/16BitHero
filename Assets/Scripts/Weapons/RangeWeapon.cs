@@ -9,6 +9,7 @@ public class RangeWeapon : WeaponBase
     [Header(" Elements ")]
     [SerializeField] Bullet bulletPrefab;
     [SerializeField] Transform firePoint;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     [Header(" Pooling ")]
     ObjectPool<Bullet> bulletPool;
@@ -76,11 +77,34 @@ public class RangeWeapon : WeaponBase
             isCriticalHit
         );
 
-        onBulletShot?.Invoke();        
+        onBulletShot?.Invoke();      
+        StartCoroutine(RecoilIE());
     }
 
     void Reload()
     {
 
+    }
+
+    IEnumerator RecoilIE()
+    {            
+        float recoilDistance = 0.1f;
+        float recoilDuration = Mathf.Min(0.05f, attackDelay/4);
+        float recoilReturnDuration = Mathf.Min(0.1f, attackDelay/2);
+
+        Vector3 start = spriteRenderer.transform.localPosition;
+        Vector3 target = start - Vector3.right * recoilDistance;
+
+        // 후퇴
+        bool recoilDone = false;
+        LeanTween.moveLocal(spriteRenderer.gameObject, target, recoilDuration)
+            .setEase(LeanTweenType.easeOutQuad)
+            .setOnComplete(() => recoilDone = true);
+
+        yield return new WaitUntil(() => recoilDone);
+
+        // 복귀
+        LeanTween.moveLocal(spriteRenderer.gameObject, start, recoilReturnDuration)
+            .setEase(LeanTweenType.easeInQuad); 
     }
 }
