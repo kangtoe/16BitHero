@@ -5,33 +5,21 @@ using System;
 
 public class EnemyBase : CharacterBase
 {
-    #region References
     protected PlayerCharacter Player => GameManager.Instance.PlayerController;
-    #endregion
 
-    #region Spawn Settings
     [Header(" Spawn Sequence Related ")]
     [SerializeField] protected SpriteRenderer spawnIndicator;
     protected bool hasSpawned = true; // true for debug
-    #endregion
 
-    #region Attack Settings
     [Header(" Attack ")]
     [SerializeField] protected int damage;
     [SerializeField] protected float attackFrequency;
     protected float attackDelay;
     protected float attackCooldown;
-    #endregion
 
-    #region Effects
-    [Header(" Effects ")]
-    [SerializeField] protected ParticleSystem deathParticles;
-    #endregion
-    
     protected Vector2 LookDir => (Player.transform.position - transform.position).normalized;
     bool isPlayerInAttackArea = false;
 
-    #region Unity Lifecycle
     protected override void Start()
     {
         base.Start();
@@ -64,9 +52,7 @@ public class EnemyBase : CharacterBase
             }
         }                        
     }
-    #endregion
 
-    #region Spawn Logic
     private void StartSpawnSequence()
     {
         SetVisibility(false);
@@ -89,9 +75,7 @@ public class EnemyBase : CharacterBase
         spriteRenderer.enabled = visible;
         characterCollider.enabled = visible;
     }
-    #endregion
 
-    #region Attack Logic
     protected bool isActive()
     {
         return spriteRenderer.enabled && hasSpawned;
@@ -103,9 +87,7 @@ public class EnemyBase : CharacterBase
         Player.TakeDamage(damage);
         //Player.Knockback(LookDir);
     }
-    #endregion
 
-    #region Movement Logic
     protected void MoveToPlayer(float deltaTime, float moveSpeed)
     {
         bool isCloseEnough = (Player.transform.position - transform.position).magnitude < 0.5f;
@@ -114,21 +96,7 @@ public class EnemyBase : CharacterBase
         Vector2 direction = (Player.transform.position - transform.position).normalized;        
         Move(direction * moveSpeed * deltaTime);
     }
-    #endregion
 
-    #region Death Logic
-    protected override void Die()
-    {
-        onDeath?.Invoke(transform.position);
-        if (deathParticles)
-            Instantiate(deathParticles, transform.position, Quaternion.identity);
-
-        Destroy(gameObject);
-    }
-    #endregion
-
-    
-    #region Trigger Events
     private void OnTriggerStay2D(Collider2D other)
     {
         isPlayerInAttackArea = other.gameObject == Player.gameObject;        
@@ -141,5 +109,4 @@ public class EnemyBase : CharacterBase
             isPlayerInAttackArea = false;
         }
     }
-    #endregion
 }

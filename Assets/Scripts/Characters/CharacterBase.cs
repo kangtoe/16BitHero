@@ -38,15 +38,17 @@ public abstract class CharacterBase : MonoBehaviour
     protected bool isFlipped;
     public bool IsFlipped => isFlipped;
 
-    [Header("Actions")]
-    public static Action<int, Vector2, bool> onDamageTaken;
-    public static Action<Vector2> onDeath;
-
-    #region Knockback
+    [Header("Knockback")]
     protected bool isKnockback = false;
     protected Coroutine knockbackCoroutine;
     protected Vector2 knockbackDirection;
-    #endregion
+
+    [Header("Effects")]
+    [SerializeField] protected ParticleSystem deathParticles;
+
+    [Header("Events")]
+    public static Action<int, Vector2, bool> onDamageTaken;
+    public static Action<Vector2> onDeath;
 
     protected virtual void Awake()
     {
@@ -75,6 +77,9 @@ public abstract class CharacterBase : MonoBehaviour
     protected virtual void Die()
     {
         onDeath?.Invoke(transform.position);
+        if (deathParticles)
+            Instantiate(deathParticles, CenterPos, Quaternion.identity);
+
         Destroy(gameObject);
     }
 
