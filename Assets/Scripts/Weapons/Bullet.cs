@@ -58,7 +58,7 @@ public class Bullet : MonoBehaviour
         if(!target) return;                
         
         isHit = true;
-        target.TakeDamage(damage, isCriticalHit);
+        target.TakeDamage(transform.position, damage, isCriticalHit);
         if(knockback > 0f)
         {
             target.Knockback(transform.right * knockback);

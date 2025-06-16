@@ -84,7 +84,8 @@ public class EnemyBase : CharacterBase
     protected virtual void Attack()
     {        
         Debug.Log("Attack");
-        Player.TakeDamage(damage);
+        Vector2 hitPoint = characterCollider.ClosestPoint(Player.CharacterCollider.bounds.center);
+        Player.TakeDamage(hitPoint, damage);
         //Player.Knockback(LookDir);
     }
 

@@ -12,6 +12,7 @@ public abstract class CharacterBase : MonoBehaviour
     [Header("Components")]
     [SerializeField]protected Rigidbody2D rig;
     [SerializeField] protected Collider2D characterCollider;
+    public Collider2D CharacterCollider => characterCollider;
     [SerializeField]protected Animator animator;
     [SerializeField]protected SpriteRenderer spriteRenderer;
     
@@ -63,12 +64,20 @@ public abstract class CharacterBase : MonoBehaviour
         CurrHealth = maxHealth;
     }
 
-    public virtual void TakeDamage(int damage, bool isCriticalHit = false)
+    public virtual void TakeDamage(Vector3 hitPoint, int damage, bool isCriticalHit = false)
     {
         int realDamage = Mathf.Min(damage, CurrHealth);
         CurrHealth -= realDamage;
 
         onDamageTaken?.Invoke(damage, transform.position, isCriticalHit);
+
+        if(hitPoint != null)
+        {
+            Text3dMaker.Instance.MakeText(
+                damage.ToString(), 
+                hitPoint - Vector3.forward, // 표기 지점을 캐릭터 앞으로 조정
+                isCriticalHit? Color.yellow : Color.white);
+        }
 
         if (CurrHealth <= 0)
             Die();

@@ -60,8 +60,11 @@ public class MeleeWeapon : WeaponBase
         if(!target) return;        
         if (damagedCharacters.Contains(target)) return;
 
+        // 충돌 지점 계산
+        Vector2 hitPoint = collision.ClosestPoint(hitCollider.bounds.center);
+
         int damage = GetDamage(out bool isCriticalHit);
-        target.TakeDamage(damage, isCriticalHit);
+        target.TakeDamage(hitPoint, damage, isCriticalHit);
         damagedCharacters.Add(target);
 
         if(knockback > 0f)
