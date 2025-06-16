@@ -8,11 +8,13 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
 
     [Header("Settings")]
     [SerializeField] protected float range;
+    public float Range => range;
     [SerializeField] protected LayerMask targetMask;
 
     [Header("Attack")]
     [SerializeField] protected int damage;
     [SerializeField] protected float attackDelay;
+    public float AttackDelay => attackDelay;
 
     protected float attackCooldown;
 
@@ -42,6 +44,7 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
 
     [SerializeField] protected CharacterBase owner;
     protected CharacterBase target;
+    public CharacterBase Target => target;
 
     protected void Awake()
     {

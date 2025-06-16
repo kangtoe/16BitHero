@@ -28,7 +28,8 @@ public class EnemyBase : CharacterBase
     [SerializeField] protected ParticleSystem deathParticles;
     #endregion
 
-    Vector2 LookDir => (Player.transform.position - transform.position).normalized;
+    protected float DistanceToPlayer => Vector2.Distance(transform.position, Player.transform.position);
+    protected Vector2 LookDir => (Player.transform.position - transform.position).normalized;
     bool isPlayerInRange = false;
 
     #region Unity Lifecycle
@@ -52,7 +53,7 @@ public class EnemyBase : CharacterBase
     {
         if (!isActive()) return;            
 
-        MoveToPlayer(Time.deltaTime);
+        MoveToPlayer(Time.deltaTime, moveSpeed);
 
         if(attackCooldown > 0f) attackCooldown -= Time.deltaTime;         
         else
@@ -106,7 +107,7 @@ public class EnemyBase : CharacterBase
     #endregion
 
     #region Movement Logic
-    protected void MoveToPlayer(float deltaTime)
+    protected void MoveToPlayer(float deltaTime, float moveSpeed)
     {
         if((Player.transform.position - transform.position).magnitude < 0.5f) return;
 

@@ -111,10 +111,14 @@ public abstract class CharacterBase : MonoBehaviour
                 
         animator?.SetBool("bMove", vel.magnitude > 0);
 
-        // 이동 방향에 따라 스프라이트 뒤집기
-        if (vel.x != 0)
+        FlipSpriteCheck(vel);
+    }
+
+    protected virtual void FlipSpriteCheck(Vector2 lookDir)
+    {
+        if (lookDir.x != 0)
         {
-            isFlipped = vel.x < 0;
+            isFlipped = lookDir.x < 0;
             spriteRenderer.transform.localScale = new Vector3(isFlipped ? -1 : 1, 1, 1);
         }
     }
