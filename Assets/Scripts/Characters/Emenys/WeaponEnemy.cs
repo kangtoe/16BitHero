@@ -2,11 +2,11 @@ using UnityEngine;
 using System;
 using UnityEngine.Pool;
 
-public class RangeEnemy : EnemyBase
+public class WeaponEnemy : EnemyBase
 {
-    [Header(" Range Attack Elements ")]
-    [SerializeField] RangeWeapon rangeWeapon;    
-    bool IsCloseEnough => rangeWeapon?.Target;
+    [Header("Range Attack")]
+    [SerializeField] WeaponBase weapon;    
+    bool IsCloseEnough => weapon?.Target;
 
     protected override void Start()
     {

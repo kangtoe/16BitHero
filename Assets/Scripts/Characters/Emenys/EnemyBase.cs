@@ -7,11 +7,11 @@ public class EnemyBase : CharacterBase
 {
     protected PlayerCharacter Player => GameManager.Instance.PlayerController;
 
-    [Header(" Spawn Sequence Related ")]
+    [Header("Spawn Sequence")]
     [SerializeField] protected SpriteRenderer spawnIndicator;
     protected bool hasSpawned = true; // true for debug
 
-    [Header(" Attack ")]
+    [Header("Melee Attack")]
     [SerializeField] protected int damage;
     [SerializeField] protected float attackFrequency;
     protected float attackDelay;
