@@ -159,7 +159,7 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
     {
         isCriticalHit = false;
 
-        if (Random.Range(0, 101) <= criticalChance)
+        if (Random.Range(1, 101) <= criticalChance)
         {
             isCriticalHit = true;
             return Mathf.RoundToInt(damage * criticalDamageMultiplier);
