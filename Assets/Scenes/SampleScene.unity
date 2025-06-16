@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5968007fe5471f1449d273a002735da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDamageText: 1
   rig: {fileID: 0}
   characterCollider: {fileID: 0}
   animator: {fileID: 0}
@@ -11685,6 +11686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cca86254170592409d00ab908ebe8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDamageText: 0
   rig: {fileID: 1710743568}
   characterCollider: {fileID: 1710743567}
   animator: {fileID: 972461165}
@@ -11924,6 +11926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aca0f1d998130e42947ccecdb272f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDamageText: 1
   rig: {fileID: 0}
   characterCollider: {fileID: 0}
   animator: {fileID: 0}

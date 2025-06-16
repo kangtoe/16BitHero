@@ -9,6 +9,8 @@ public abstract class CharacterBase : MonoBehaviour
 {
     public Vector2 CenterPos => characterCollider.bounds.center;
 
+    [SerializeField] protected bool showDamageText = true;
+
     [Header("Components")]
     [SerializeField]protected Rigidbody2D rig;
     [SerializeField] protected Collider2D characterCollider;
@@ -71,7 +73,7 @@ public abstract class CharacterBase : MonoBehaviour
 
         onDamageTaken?.Invoke(damage, transform.position, isCriticalHit);
 
-        if(hitPoint != null)
+        if(showDamageText && hitPoint != null)
         {
             Text3dMaker.Instance.MakeText(
                 damage.ToString(), 
