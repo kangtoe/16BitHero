@@ -67,7 +67,14 @@ public class RangeWeapon : WeaponBase
 
         Bullet bullet = bulletPool.Get();
         bullet.transform.position = firePoint.position;
-        bullet.Init(targetMask, damage, (ShouldFlip ? -1 : 1) * firePoint.right, bulletSpeed, isCriticalHit);        
+        bullet.Init(
+            targetMask, 
+            damage, 
+            knockback, 
+            (ShouldFlip ? -1 : 1) * firePoint.right, 
+            bulletSpeed, 
+            isCriticalHit
+        );
 
         onBulletShot?.Invoke();        
     }

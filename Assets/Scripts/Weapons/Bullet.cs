@@ -14,9 +14,13 @@ public class Bullet : MonoBehaviour
     [Header(" Settings ")]
     LayerMask targetMask;    
     int damage;
+    float knockback;
     bool isCriticalHit;
     float lifetime = 5f;
 
+    [Header(" Flags ")]
+    bool isReleased; // 총알이 풀에 반환되었는지 확인
+    bool isHit; // 물리 시스템에서 Collider.enabled = false는 다음 프레임부터 적용되므로 충돌 처리를 위해 별도의 플래그 사용
     void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -28,36 +32,48 @@ public class Bullet : MonoBehaviour
         this.pool = pool;
     }
 
-    public void Init(LayerMask targetMask, int damage, Vector2 direction, float moveSpeed, bool isCriticalHit)
+    public void Init(LayerMask targetMask, int damage, float knockback, Vector2 direction, float moveSpeed, bool isCriticalHit)
     {
         this.targetMask = targetMask;
         this.damage = damage;
+        this.knockback = knockback;
         transform.right = direction;
         rig.velocity = direction * moveSpeed;
         this.isCriticalHit = isCriticalHit;
-        gameObject.SetActive(this);
 
+        this.isReleased = false;
+        this.isHit = false;
+        gameObject.SetActive(this);
         projectileCollider.enabled = true;
 
         // lifetime 설정           
-        Invoke(nameof(OnHit), lifetime);
+        Invoke(nameof(ReturnToPool), lifetime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (isHit) return;
         if (((1 << other.gameObject.layer) & targetMask) == 0) return;
         CharacterBase target = other.GetComponent<CharacterBase>();
         if(!target) return;                
         
+        isHit = true;
         target.TakeDamage(damage, isCriticalHit);
+        if(knockback > 0f)
+        {
+            target.Knockback(transform.right * knockback);
+        }
         projectileCollider.enabled = false;
 
-        OnHit();        
+        ReturnToPool();        
     }
 
-    public void OnHit()
+    public void ReturnToPool()
     {        
-        CancelInvoke(nameof(OnHit));     
+        if (isReleased) return;        
+        isReleased = true;      
+          
+        CancelInvoke(nameof(ReturnToPool));
         pool.Release(this);
     }
 }

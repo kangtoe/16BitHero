@@ -63,5 +63,11 @@ public class MeleeWeapon : WeaponBase
         int damage = GetDamage(out bool isCriticalHit);
         target.TakeDamage(damage, isCriticalHit);
         damagedCharacters.Add(target);
+
+        if(knockback > 0f)
+        {
+            Vector2 direction = (target.transform.position - transform.position).normalized;
+            target.Knockback(direction * knockback);
+        }
     }    
 }
