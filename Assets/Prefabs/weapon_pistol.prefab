@@ -132,16 +132,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <WeaponData>k__BackingField: {fileID: 0}
-  range: 4
   targetMask:
     serializedVersion: 2
     m_Bits: 256
-  damage: 1
+  range: 4
+  damage: 5
   attackDelay: 1
+  knockback: 1
+  criticalChance: 50
+  criticalDamageMultiplier: 2
   level: 0
   owner: {fileID: 0}
   bulletPrefab: {fileID: 2649885531228156523, guid: c5a2b5d73d593e3469ac743a5b6f670d, type: 3}
   firePoint: {fileID: 3248735244337204451}
+  spriteRenderer: {fileID: 6603862416280967199}
   bulletSpeed: 10
 --- !u!50 &3047440747912855045
 Rigidbody2D:
