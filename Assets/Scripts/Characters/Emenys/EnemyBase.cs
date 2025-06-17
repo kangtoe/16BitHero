@@ -48,8 +48,12 @@ public class EnemyBase : CharacterBase
         if (!IsActive) return;            
 
         MoveToPlayer(Time.deltaTime, moveSpeed);
+        AttackCheck(Time.deltaTime);
+    }
 
-        if(attackCooldown > 0f) attackCooldown -= Time.deltaTime;         
+    protected virtual void AttackCheck(float deltaTime)
+    {
+        if(attackCooldown > 0f) attackCooldown -= deltaTime;         
         else
         {
             if(attackCooldown <= 0f && isPlayerInAttackArea)
@@ -57,30 +61,7 @@ public class EnemyBase : CharacterBase
                 attackCooldown = attackDelay;
                 Attack();
             }
-        }                        
-    }
-
-    private void StartSpawnSequence()
-    {
-        SetVisibility(false);
-
-        // Scale up & down the spawn indicator
-        Vector3 targetScale = spawnIndicator.transform.localScale * 1.2f;
-        LeanTween.scale(spawnIndicator.gameObject, targetScale, .3f)
-            .setLoopPingPong(4)
-            .setOnComplete(SpawnSequenceCompleted);
-    }
-
-    private void SpawnSequenceCompleted()
-    {
-        SetVisibility(true);
-        hasSpawned = true;
-    }
-
-    private void SetVisibility(bool visible)
-    {
-        spriteRenderer.enabled = visible;
-        characterCollider.enabled = visible;
+        }   
     }
 
     protected virtual void Attack()
@@ -117,5 +98,28 @@ public class EnemyBase : CharacterBase
         {
             isPlayerInAttackArea = false;
         }
+    }
+
+        private void StartSpawnSequence()
+    {
+        SetVisibility(false);
+
+        // Scale up & down the spawn indicator
+        Vector3 targetScale = spawnIndicator.transform.localScale * 1.2f;
+        LeanTween.scale(spawnIndicator.gameObject, targetScale, .3f)
+            .setLoopPingPong(4)
+            .setOnComplete(SpawnSequenceCompleted);
+    }
+
+    private void SpawnSequenceCompleted()
+    {
+        SetVisibility(true);
+        hasSpawned = true;
+    }
+
+    private void SetVisibility(bool visible)
+    {
+        spriteRenderer.enabled = visible;
+        characterCollider.enabled = visible;
     }
 }

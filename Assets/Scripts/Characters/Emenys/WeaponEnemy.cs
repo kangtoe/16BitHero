@@ -17,6 +17,7 @@ public class WeaponEnemy : EnemyBase
     {
         if (!IsActive) return;
             
+        AttackCheck(Time.deltaTime);
         MoveToPlayer(Time.deltaTime, IsCloseEnough ? 0 : moveSpeed);        
         if(IsCloseEnough) FlipSpriteCheck(LookDir);
     }
