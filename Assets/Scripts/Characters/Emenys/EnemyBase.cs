@@ -5,7 +5,7 @@ using System;
 
 public class EnemyBase : CharacterBase
 {
-    protected PlayerCharacter Player => GameManager.Instance.PlayerController;
+    protected PlayerCharacter Player => GameManager.Instance.Player;
 
     [Header("Spawn Sequence")]
     [SerializeField] protected SpriteRenderer spawnIndicator;

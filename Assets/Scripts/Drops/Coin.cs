@@ -8,9 +8,9 @@ public class Coin : DropItemBase
     [SerializeField] int coinValue = 1;
 
     protected override void CollectItem()
-    {
-        Debug.Log($"Coin collected: {coinValue}");
+    {        
         base.CollectItem();
-        //GameManager.Instance.AddCoin(coinValue);
+        PlayerResManager.Instance.EarnGold(coinValue);
+        GameManager.Instance.Player.PlayerLevel.GetXp(coinValue);
     }
 }

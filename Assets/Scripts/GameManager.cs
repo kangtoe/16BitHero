@@ -12,12 +12,12 @@ public class GameManager : MonoSingleton<GameManager>
     public static Action onGameResumed;
 
     [Header("for debug")]
-    [SerializeField] PlayerCharacter playerController;
-    public PlayerCharacter PlayerController
+    [SerializeField] PlayerCharacter player;
+    public PlayerCharacter Player
     {
         get {
-            if (!playerController) playerController = FindObjectOfType<PlayerCharacter>();
-            return playerController;
+            if (!player) player = FindObjectOfType<PlayerCharacter>();
+            return player;
         }
     }
 

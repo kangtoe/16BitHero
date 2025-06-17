@@ -6,7 +6,8 @@ using System;
 public abstract class DropItemBase : MonoBehaviour
 {
     [Header("Drop Item Settings")]        
-    [SerializeField] protected float pickupRadius = 1f;
+    [SerializeField] bool isAutoCollectable = true;
+    public bool IsAutoCollectable => isAutoCollectable;
     
     protected bool isCollected = false;
     

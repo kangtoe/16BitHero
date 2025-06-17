@@ -1,14 +1,18 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerLevel))]
 public class PlayerCharacter : CharacterBase
 {
     [Header("Elements")]
     [SerializeField] MobileJoystick playerJoystick;
 
     [Header("Collect")]
-    [SerializeField] float collectRadius = 1f;    
-    [SerializeField] float collectPower = 10f;    
+    [SerializeField] float autoCollectRadius = 1f;    
+    [SerializeField] float autoCollectPower = 10f;  
+
+    [Header("Level")] 
+    [SerializeField] PlayerLevel playerLevel;
+    public PlayerLevel PlayerLevel => playerLevel;
 
     private void FixedUpdate()
     {
@@ -21,20 +25,20 @@ public class PlayerCharacter : CharacterBase
 
     private void PullInNearbyItems(float deltaTime)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(CenterPos, collectRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(CenterPos, autoCollectRadius);
         foreach (var col in colliders)
         {
             DropItemBase item = col.GetComponent<DropItemBase>();
-            if (!item) continue;
+            if (!item || !item.IsAutoCollectable) continue;
             
             Vector3 direction = (CenterPos - (Vector2)col.transform.position).normalized;
-            item.transform.position += direction * collectPower * deltaTime;
+            item.transform.position += direction * autoCollectPower * deltaTime;
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(CenterPos, collectRadius);
+        Gizmos.DrawWireSphere(CenterPos, autoCollectRadius);
     }
 }
