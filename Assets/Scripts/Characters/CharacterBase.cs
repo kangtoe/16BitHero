@@ -85,6 +85,13 @@ public abstract class CharacterBase : MonoBehaviour
             Die();
     }
 
+    public virtual void Heal(int amount)
+    {
+        CurrHealth += amount;
+        if (CurrHealth > maxHealth)
+            CurrHealth = maxHealth;
+    }
+
     protected virtual void Die()
     {
         onDeath?.Invoke(transform.position);
