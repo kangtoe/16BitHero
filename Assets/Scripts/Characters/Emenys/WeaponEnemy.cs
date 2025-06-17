@@ -15,7 +15,7 @@ public class WeaponEnemy : EnemyBase
 
     protected override void Update()
     {
-        if (!isActive()) return;
+        if (!IsActive) return;
             
         MoveToPlayer(Time.deltaTime, IsCloseEnough ? 0 : moveSpeed);        
         if(IsCloseEnough) FlipSpriteCheck(LookDir);

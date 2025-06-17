@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class DropItemBase : MonoBehaviour
 {
+    public Rigidbody2D Rigidbody => rig;
+    [SerializeField] Rigidbody2D rig;
+
     [Header("Drop Item Settings")]        
     [SerializeField] bool isAutoCollectable = true;
     public bool IsAutoCollectable => isAutoCollectable;
     
-    protected bool isCollected = false;
-    
-    // Action 이벤트 - 아이템 수집 시 호출될 이벤트
+    protected bool isCollected = false;        
     public event Action<DropItemBase> OnItemCollectedEvent;
     
-    // 가상 메서드 - 상속받는 클래스에서 선택적으로 오버라이드 가능
+    protected virtual void Awake()
+    {
+        rig = GetComponent<Rigidbody2D>();
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (isCollected) return;
@@ -30,10 +36,8 @@ public abstract class DropItemBase : MonoBehaviour
         if (isCollected) return;        
         isCollected = true;
         
-        // Action 이벤트 호출
         OnItemCollectedEvent?.Invoke(this);
         
-        // 아이템 수집 후 오브젝트 제거
         Destroy(gameObject);
     }
 }

@@ -6,6 +6,13 @@ using System;
 public class EnemyBase : CharacterBase
 {
     protected PlayerCharacter Player => GameManager.Instance.Player;
+    public bool IsActive => spriteRenderer.enabled && hasSpawned;
+
+    [Header("Drop Settings")]
+    [SerializeField] protected int coinDropAmount = 1;
+    [SerializeField] protected int chestDropAmount = 0;
+    [SerializeField] protected int potionDropAmount = 0;
+    [SerializeField] protected int diamondDropAmount = 0;
 
     [Header("Spawn Sequence")]
     [SerializeField] protected SpriteRenderer spawnIndicator;
@@ -38,7 +45,7 @@ public class EnemyBase : CharacterBase
 
     protected virtual void Update()
     {
-        if (!isActive()) return;            
+        if (!IsActive) return;            
 
         MoveToPlayer(Time.deltaTime, moveSpeed);
 
@@ -76,11 +83,6 @@ public class EnemyBase : CharacterBase
         characterCollider.enabled = visible;
     }
 
-    protected bool isActive()
-    {
-        return spriteRenderer.enabled && hasSpawned;
-    }
-
     protected virtual void Attack()
     {        
         Debug.Log("Attack");
@@ -96,6 +98,12 @@ public class EnemyBase : CharacterBase
 
         Vector2 direction = (Player.transform.position - transform.position).normalized;        
         Move(direction * moveSpeed * deltaTime);
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        DropManager.Instance.DropItem(transform.position, coinDropAmount, chestDropAmount, potionDropAmount, diamondDropAmount);
     }
 
     private void OnTriggerStay2D(Collider2D other)
