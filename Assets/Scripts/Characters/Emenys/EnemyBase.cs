@@ -26,7 +26,7 @@ public class EnemyBase : CharacterBase
     [SerializeField] protected float attackRange = 1;
     [SerializeField] protected Vector2 attackAreaOffset;
 
-    protected Vector2 LookDir => (Player.transform.position - transform.position).normalized;
+    protected virtual Vector2 LookDir => (Player.transform.position - transform.position).normalized;
     bool isPlayerInAttackArea = false;
 
     protected override void Start()
@@ -117,7 +117,7 @@ public class EnemyBase : CharacterBase
         characterCollider.enabled = visible;
     }
 
-    private void OnDrawGizmosSelected()
+    protected virtual void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(CenterPos + attackAreaOffset, attackRange);

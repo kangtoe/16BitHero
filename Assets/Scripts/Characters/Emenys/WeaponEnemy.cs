@@ -13,7 +13,7 @@ public class WeaponEnemy : EnemyBase
         if(IsCloseEnough)
         {
             Move(Vector2.zero);
-            FlipSpriteCheck(LookDir);
+            FlipSpriteCheck(LookDir * moveSpeed);
         }
         else
         {
