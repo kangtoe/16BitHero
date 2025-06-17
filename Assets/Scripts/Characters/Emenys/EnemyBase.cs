@@ -23,6 +23,8 @@ public class EnemyBase : CharacterBase
     [SerializeField] protected float attackFrequency;
     protected float attackDelay;
     protected float attackCooldown;
+    [SerializeField] protected float attackRange;
+    [SerializeField] protected Vector2 attackAreaOffset;
 
     protected Vector2 LookDir => (Player.transform.position - transform.position).normalized;
     bool isPlayerInAttackArea = false;
@@ -56,17 +58,20 @@ public class EnemyBase : CharacterBase
         if(attackCooldown > 0f) attackCooldown -= deltaTime;         
         else
         {
-            if(attackCooldown <= 0f && isPlayerInAttackArea)
-            {  
-                attackCooldown = attackDelay;
+            Collider2D coll = Physics2D.OverlapCircle(
+                CenterPos + attackAreaOffset, 
+                attackRange, 
+                1 << Player.gameObject.layer);
+            if(coll)
+            {
                 Attack();
-            }
+                attackCooldown = attackDelay;
+            }         
         }   
     }
 
     protected virtual void Attack()
-    {        
-        Debug.Log("Attack");
+    {                
         Vector2 hitPoint = characterCollider.ClosestPoint(Player.CharacterCollider.bounds.center);
         Player.TakeDamage(hitPoint, damage);
         //Player.Knockback(LookDir);
@@ -87,20 +92,7 @@ public class EnemyBase : CharacterBase
         DropManager.Instance.DropItem(transform.position, coinDropAmount, chestDropAmount, potionDropAmount, diamondDropAmount);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        isPlayerInAttackArea = other.gameObject == Player.gameObject;        
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject == Player.gameObject)
-        {
-            isPlayerInAttackArea = false;
-        }
-    }
-
-        private void StartSpawnSequence()
+    private void StartSpawnSequence()
     {
         SetVisibility(false);
 
@@ -121,5 +113,11 @@ public class EnemyBase : CharacterBase
     {
         spriteRenderer.enabled = visible;
         characterCollider.enabled = visible;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(CenterPos + attackAreaOffset, attackRange);
     }
 }
