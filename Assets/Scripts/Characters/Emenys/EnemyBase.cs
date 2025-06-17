@@ -19,11 +19,11 @@ public class EnemyBase : CharacterBase
     protected bool hasSpawned = true; // true for debug
 
     [Header("Melee Attack")]
-    [SerializeField] protected int damage;
-    [SerializeField] protected float attackFrequency;
+    [SerializeField] protected int damage = 1;
+    [SerializeField] protected float attackFrequency = 1f;
     protected float attackDelay;
     protected float attackCooldown;
-    [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackRange = 1;
     [SerializeField] protected Vector2 attackAreaOffset;
 
     protected Vector2 LookDir => (Player.transform.position - transform.position).normalized;
@@ -49,7 +49,7 @@ public class EnemyBase : CharacterBase
     {
         if (!IsActive) return;            
 
-        MoveToPlayer(Time.deltaTime, moveSpeed);
+        MoveCheck(Time.deltaTime);
         AttackCheck(Time.deltaTime);
     }
 
@@ -77,13 +77,15 @@ public class EnemyBase : CharacterBase
         //Player.Knockback(LookDir);
     }
 
-    protected void MoveToPlayer(float deltaTime, float moveSpeed)
+    protected virtual void MoveCheck(float deltaTime)
     {
         bool isCloseEnough = (Player.transform.position - transform.position).magnitude < 0.5f;
-        if(isCloseEnough) moveSpeed = 0f;
-
-        Vector2 direction = (Player.transform.position - transform.position).normalized;        
-        Move(direction * moveSpeed * deltaTime);
+        if(isCloseEnough) Move(Vector2.zero);
+        else
+        {
+            Vector2 direction = (Player.transform.position - transform.position).normalized;        
+            Move(direction * moveSpeed * deltaTime);
+        }
     }
 
     protected override void Die()

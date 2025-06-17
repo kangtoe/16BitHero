@@ -8,17 +8,16 @@ public class WeaponEnemy : EnemyBase
     [SerializeField] WeaponBase weapon;    
     bool IsCloseEnough => weapon?.Target;
 
-    protected override void Start()
+    protected override void MoveCheck(float deltaTime)
     {
-        base.Start();        
-    }
-
-    protected override void Update()
-    {
-        if (!IsActive) return;
-            
-        AttackCheck(Time.deltaTime);
-        MoveToPlayer(Time.deltaTime, IsCloseEnough ? 0 : moveSpeed);        
-        if(IsCloseEnough) FlipSpriteCheck(LookDir);
+        if(IsCloseEnough)
+        {
+            Move(Vector2.zero);
+            FlipSpriteCheck(LookDir);
+        }
+        else
+        {
+            base.MoveCheck(deltaTime);
+        }  
     }
 }
