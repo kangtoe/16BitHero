@@ -182,6 +182,51 @@ MonoBehaviour:
   diamond: 0
   goldText: {fileID: 174159392}
   diamondText: {fileID: 1313591209}
+--- !u!1 &59795452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 59795454}
+  - component: {fileID: 59795453}
+  m_Layer: 0
+  m_Name: ArenaArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &59795453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59795452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec305c0f602e12d41886f2bd96d1ccfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wall: {fileID: 1120255896}
+--- !u!4 &59795454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59795452}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 864326204}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &140708551
 GameObject:
   m_ObjectHideFlags: 0
@@ -11803,6 +11848,7 @@ Transform:
   - {fileID: 1157448567}
   - {fileID: 1778181869}
   - {fileID: 1376191705}
+  - {fileID: 59795454}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &972461163
@@ -12110,6 +12156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1710743569}
+--- !u!1839735485 &1120255896 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 5425644497010879788, guid: bd9a6e4f4f965d142bc3743bc2ef92c3, type: 3}
+  m_PrefabInstance: {fileID: 789797491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1122186265
 GameObject:
   m_ObjectHideFlags: 0
@@ -12706,8 +12757,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 65063905972221830, guid: 0b22f3994d8cefe4d85e3f09e1277fec, type: 3}
   spawnIndicatorPrefab: {fileID: 943520780497866921, guid: 9177aa0459ab4054f84c8aac9c5df7b0, type: 3}
-  spawnDelay: 1
-  spawnRadius: 5
+  spawnDelay: 0.1
+  spawnRadiusMinMax: {x: 5, y: 8}
 --- !u!1 &1422225978
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,16 +41,22 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
         }    
     }
 
-    Vector2 GetSpawnPosition()
+    Vector2 GetSpawnPosition(int maxAttempts = 10)
     {
-        Vector2 direction = Random.onUnitSphere;
-        Vector2 offset = direction.normalized * Random.Range(spawnRadiusMinMax.x, spawnRadiusMinMax.y);
-        Vector2 targetPosition = spawnCenter + offset;
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector2 direction = Random.onUnitSphere;
+            float range = Random.Range(spawnRadiusMinMax.x, spawnRadiusMinMax.y);
+            Vector2 offset = direction.normalized * range;
+            Vector2 targetPosition = spawnCenter + offset;
 
-        targetPosition.x = Mathf.Clamp(targetPosition.x, -18, 18);
-        targetPosition.y = Mathf.Clamp(targetPosition.y, -8, 8);
+            if(ArenaArea.Instance.CheckInWall(targetPosition))
+            {
+                return targetPosition;
+            }
+        }
 
-        return targetPosition;
+        return spawnCenter;
     }
 
     public void RegisterEnemy(EnemyBase enemy)
