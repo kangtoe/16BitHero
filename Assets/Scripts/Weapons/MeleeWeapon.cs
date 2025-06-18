@@ -19,15 +19,16 @@ public class MeleeWeapon : WeaponBase
     {
         base.TryAttack();
 
-        damagedCharacters.Clear();
-        hitCollider.enabled = true;
+        damagedCharacters.Clear();        
         state = State.OnProcess;
-                        
+        
         StartCoroutine(ThrustIE(range));
     }
 
-     IEnumerator ThrustIE(float thrustDistance = 1f,float thrustDuration = 0.1f, float returnDuration = 0.2f)
+    IEnumerator ThrustIE(float thrustDistance = 1f,float thrustDuration = 0.1f, float returnDuration = 0.2f)
     {            
+        hitCollider.enabled = true;
+
         Vector3 start = hitCollider.transform.localPosition;
         Vector3 target = start + Vector3.right * thrustDistance;
 
@@ -35,7 +36,11 @@ public class MeleeWeapon : WeaponBase
         bool forwardDone = false;
         LeanTween.moveLocal(hitCollider.gameObject, target, thrustDuration)
             .setEase(LeanTweenType.easeOutQuad)
-            .setOnComplete(() => forwardDone = true);
+            .setOnComplete(() => 
+            {
+                forwardDone = true;
+                hitCollider.enabled = false;
+            });
 
         yield return new WaitUntil(() => forwardDone);
 
@@ -47,10 +52,8 @@ public class MeleeWeapon : WeaponBase
 
     private void EndAttack()
     {
-        state = State.Idle;
-
-        damagedCharacters.Clear();
-        hitCollider.enabled = false;
+        state = State.Idle;        
+        damagedCharacters.Clear();        
     }
 
     void OnTriggerEnter2D(Collider2D collision)
