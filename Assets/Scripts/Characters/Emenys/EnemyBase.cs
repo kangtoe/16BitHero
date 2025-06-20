@@ -94,6 +94,31 @@ public class EnemyBase : CharacterBase
         DropManager.Instance.DropItem(transform.position, coinDropAmount, chestDropAmount, potionDropAmount, diamondDropAmount);
     }
 
+    override protected void SetCharacterSize() 
+    {
+        base.SetCharacterSize();
+
+        float _attackRange = attackRange;
+
+        switch(characterSize)
+        {
+            case CharacterSize.Small:
+                _attackRange = 0.3f;
+                
+                break;
+            case CharacterSize.Medium:
+                _attackRange = 0.45f;
+                
+                break;
+            case CharacterSize.Large:
+                _attackRange = 0.65f;
+                
+                break;
+        }
+
+        attackRange = _attackRange;
+    }
+
     private void StartSpawnSequence()
     {
         SetVisibility(false);

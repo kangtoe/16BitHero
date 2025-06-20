@@ -7,14 +7,22 @@ using System.Collections;
 [RequireComponent(typeof(CapsuleCollider2D))]
 public abstract class CharacterBase : MonoBehaviour
 {
+    protected enum CharacterSize
+    {
+        Medium = 0,
+        Small,        
+        Large
+    }
+    [SerializeField] protected CharacterSize characterSize = CharacterSize.Medium;
+
     public Vector2 CenterPos => characterCollider.bounds.center;
 
     [SerializeField] protected bool showDamageText = true;
 
     [Header("Components")]
     [SerializeField]protected Rigidbody2D rig;
-    [SerializeField] protected Collider2D characterCollider;
-    public Collider2D CharacterCollider => characterCollider;
+    [SerializeField] protected CapsuleCollider2D characterCollider;
+    public CapsuleCollider2D CharacterCollider => characterCollider;
     [SerializeField]protected Animator animator;
     [SerializeField]protected SpriteRenderer characterSprite;
     [SerializeField]protected SpriteRenderer[] outlineSprites;
@@ -57,7 +65,7 @@ public abstract class CharacterBase : MonoBehaviour
     protected virtual void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
-        characterCollider = GetComponent<Collider2D>();
+        characterCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
         characterSprite = GetComponentInChildren<SpriteRenderer>();
         outlineSprites = GetComponentsInChildren<SpriteRenderer>();
@@ -66,8 +74,54 @@ public abstract class CharacterBase : MonoBehaviour
     protected virtual void Start()
     {
         CurrHealth = maxHealth;
+        
         OutlineManager.Instance.SetOutlineMaterial(outlineSprites);
         //OutlineManager.Instance.SetOutline(outlineSprites, true); // debug code
+
+        SetCharacterSize();
+    }
+
+    void OnValidate()
+    {
+        SetCharacterSize();
+    }
+
+    virtual protected void SetCharacterSize()
+    {
+        Vector2 uiPos = Vector2.zero;
+        bool overheadUI = healthBar?.canvas?.renderMode == RenderMode.WorldSpace;
+        if(overheadUI) uiPos = healthBar.canvas.GetComponent<RectTransform>().anchoredPosition;        
+
+        Vector2 offset = characterCollider.offset;
+        Vector2 size = characterCollider.size;            
+
+        switch(characterSize)
+        {
+            case CharacterSize.Small:
+                uiPos = new Vector2(0, 1f);
+
+                offset = new Vector2(0f, 0.3f);
+                size = new Vector2(0.6f, 0.7f);
+                
+                break;
+            case CharacterSize.Medium:
+                uiPos = new Vector2(0, 1.5f);
+
+                offset = new Vector2(0f, 0.5f);
+                size = new Vector2(0.7f, 1.0f);
+                
+                break;
+            case CharacterSize.Large:
+                uiPos = new Vector2(0, 2.0f);
+
+                offset = new Vector2(0f, 0.75f);
+                size = new Vector2(1.2f, 1.6f);
+                
+                break;
+        }
+        if(overheadUI) healthBar.canvas.GetComponent<RectTransform>().anchoredPosition = uiPos;
+        characterCollider.size = size;
+        characterCollider.offset = offset;
     }
 
     public virtual void TakeDamage(Vector3 hitPoint, int damage, bool isCriticalHit = false)
