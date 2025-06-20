@@ -56,5 +56,33 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "16BitHero.sln"
+    "dotnet.defaultSolution": "16BitHero.sln",
+    "editor.suggestSelection": "first",
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    "editor.quickSuggestionsDelay": 10,
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.tabCompletion": "on",
+    "editor.wordBasedSuggestions": true,
+    "editor.parameterHints.enabled": true,
+    "editor.hover.enabled": true,
+    "editor.hover.delay": 300,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableImportCompletion": true,
+    "omnisharp.enableAsyncCompletion": true,
+    "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
+    "files.associations": {
+        "*.cs": "csharp"
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    }
 }
