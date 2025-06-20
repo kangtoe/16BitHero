@@ -8,7 +8,7 @@ public class OutlineManager : MonoSingleton<OutlineManager>
     [SerializeField] Color color = Color.white;
     [Range(0, 16)] [SerializeField] int outlineSize = 1;    
 
-    public void SetOutlineMaterial(SpriteRenderer spriteRenderer)
+    public void SetOutlineMaterial(SpriteRenderer[] spriteRenderers)
     {
         if(!outlineMaterial)
         {
@@ -16,12 +16,18 @@ public class OutlineManager : MonoSingleton<OutlineManager>
             return;
         }
 
-        spriteRenderer.material = outlineMaterial;
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            spriteRenderer.material = outlineMaterial;
+        }
     }
 
-    public void SetOutline(SpriteRenderer spriteRenderer, bool isOutline)
+    public void SetOutline(SpriteRenderer[] spriteRenderers, bool isOutline)
     {
-        UpdateOutline(spriteRenderer, isOutline);
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            UpdateOutline(spriteRenderer, isOutline);
+        }
     }
 
     void UpdateOutline(SpriteRenderer sprite, bool outline)

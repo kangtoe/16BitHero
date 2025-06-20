@@ -6,7 +6,7 @@ using System;
 public class EnemyBase : CharacterBase
 {
     protected PlayerCharacter Player => GameManager.Instance.Player;
-    public bool IsActive => spriteRenderer.enabled && hasSpawned;
+    public bool IsActive => characterSprite.enabled && hasSpawned;
 
     [Header("Drop Settings")]
     [SerializeField] protected int coinDropAmount = 1;
@@ -113,7 +113,7 @@ public class EnemyBase : CharacterBase
 
     private void SetVisibility(bool visible)
     {
-        spriteRenderer.enabled = visible;
+        characterSprite.enabled = visible;
         characterCollider.enabled = visible;
     }
 

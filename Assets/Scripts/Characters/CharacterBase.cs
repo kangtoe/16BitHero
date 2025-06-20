@@ -16,7 +16,8 @@ public abstract class CharacterBase : MonoBehaviour
     [SerializeField] protected Collider2D characterCollider;
     public Collider2D CharacterCollider => characterCollider;
     [SerializeField]protected Animator animator;
-    [SerializeField]protected SpriteRenderer spriteRenderer;
+    [SerializeField]protected SpriteRenderer characterSprite;
+    [SerializeField]protected SpriteRenderer[] outlineSprites;
     
 
     [Header("Health")]
@@ -58,14 +59,15 @@ public abstract class CharacterBase : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         characterCollider = GetComponent<Collider2D>();
         animator = GetComponentInChildren<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        characterSprite = GetComponentInChildren<SpriteRenderer>();
+        outlineSprites = GetComponentsInChildren<SpriteRenderer>();
     }
 
     protected virtual void Start()
     {
         CurrHealth = maxHealth;
-        OutlineManager.Instance.SetOutlineMaterial(spriteRenderer);
-        OutlineManager.Instance.SetOutline(spriteRenderer, true); // debug code
+        OutlineManager.Instance.SetOutlineMaterial(outlineSprites);
+        //OutlineManager.Instance.SetOutline(outlineSprites, true); // debug code
     }
 
     public virtual void TakeDamage(Vector3 hitPoint, int damage, bool isCriticalHit = false)
@@ -144,7 +146,7 @@ public abstract class CharacterBase : MonoBehaviour
         if (lookDir.x != 0)
         {
             isFlipped = lookDir.x < 0;
-            spriteRenderer.transform.localScale = new Vector3(isFlipped ? -1 : 1, 1, 1);
+            characterSprite.transform.localScale = new Vector3(isFlipped ? -1 : 1, 1, 1);
         }
     }
 } 
