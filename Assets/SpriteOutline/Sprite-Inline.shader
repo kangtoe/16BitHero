@@ -1,4 +1,4 @@
-Shader "Sprites/OutlineFixedFinal"
+Shader "Sprites/Inline"
 {
     Properties
     {
@@ -12,7 +12,7 @@ Shader "Sprites/OutlineFixedFinal"
 
         [PerRendererData] _Line("Line", Float) = 0
         [PerRendererData] _LineColor("Line Color", Color) = (1,1,1,1)
-        [PerRendererData] _LineSize("Line Size", int) = 1
+        [PerRendererData] _LineSize("Line Size", int) = 0
     }
 
     SubShader
@@ -58,10 +58,9 @@ Shader "Sprites/OutlineFixedFinal"
             {
                 fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
 
-                // ✅ 픽셀이 투명한 경우 → 아웃라인 조건 검사
-                if (_Line > 0 && c.a == 0)
+                if (_Line > 0 && c.a > 0.0)
                 {
-                    float neighborAlpha = 0.0;
+                    float hasTransparentNeighbor = 0.0;
 
                     [unroll(16)]
                     for (int i = 1; i <= _LineSize; i++)
@@ -71,23 +70,18 @@ Shader "Sprites/OutlineFixedFinal"
                         float2 uvRight = IN.texcoord + float2(i * _MainTex_TexelSize.x, 0);
                         float2 uvLeft = IN.texcoord - float2(i * _MainTex_TexelSize.x, 0);
 
-                        neighborAlpha = max(neighborAlpha, SampleAlphaSafe(uvUp));
-                        neighborAlpha = max(neighborAlpha, SampleAlphaSafe(uvDown));
-                        neighborAlpha = max(neighborAlpha, SampleAlphaSafe(uvRight));
-                        neighborAlpha = max(neighborAlpha, SampleAlphaSafe(uvLeft));
+                        hasTransparentNeighbor = max(hasTransparentNeighbor, 1.0 - SampleAlphaSafe(uvUp));
+                        hasTransparentNeighbor = max(hasTransparentNeighbor, 1.0 - SampleAlphaSafe(uvDown));
+                        hasTransparentNeighbor = max(hasTransparentNeighbor, 1.0 - SampleAlphaSafe(uvRight));
+                        hasTransparentNeighbor = max(hasTransparentNeighbor, 1.0 - SampleAlphaSafe(uvLeft));
                     }
 
-                    if (neighborAlpha > 0.0)
+                    if (hasTransparentNeighbor > 0.0)
                     {
                         return _LineColor;
                     }
-                    else
-                    {
-                        return fixed4(0, 0, 0, 0); // 완전 투명
-                    }
                 }
 
-                // ✅ 원래 스프라이트 픽셀은 그대로 출력
                 c.rgb *= c.a;
                 return c;
             }

@@ -542,8 +542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71239a43d2ce8c440acb4da499873446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMaterial: {fileID: 2100000, guid: bf325a436e1150541949292ba88ad931, type: 2}
-  color: {r: 1, g: 1, b: 1, a: 1}
+  outlineMaterial: {fileID: 2100000, guid: 02226a8f73686b840bba7783801f03a2, type: 2}
+  color: {r: 1, g: 0, b: 0, a: 1}
   outlineSize: 1
 --- !u!4 &263685994 stripped
 Transform:
@@ -11744,7 +11744,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf325a436e1150541949292ba88ad931, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13063,7 +13063,6 @@ GameObject:
   - component: {fileID: 1422225982}
   - component: {fileID: 1422225981}
   - component: {fileID: 1422225983}
-  - component: {fileID: 1422225984}
   m_Layer: 8
   m_Name: slug_chest
   m_TagString: Untagged
@@ -13187,24 +13186,6 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 1024
---- !u!114 &1422225984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422225978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d47c3181bccf1945a1b4b5447ab8e4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMaterial: {fileID: 2100000, guid: bf325a436e1150541949292ba88ad931, type: 2}
-  color: {r: 1, g: 1, b: 1, a: 1}
-  outlineSize: 0
-  spriteRenderers:
-  - {fileID: 845529677}
-  - {fileID: 2090101529}
 --- !u!1 &1438615069
 GameObject:
   m_ObjectHideFlags: 0
@@ -13624,6 +13605,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 7c10592f4da3ae14bbd6ac791551ae5b, type: 3}
+    - target: {fileID: 1552732884691319919, guid: 0b22f3994d8cefe4d85e3f09e1277fec, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2573964276634171687, guid: 0b22f3994d8cefe4d85e3f09e1277fec, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2
@@ -14185,6 +14170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2090101530}
   - component: {fileID: 2090101529}
+  - component: {fileID: 2090101531}
   m_Layer: 0
   m_Name: chest_empty_open_anim_f0
   m_TagString: Untagged
@@ -14212,7 +14198,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf325a436e1150541949292ba88ad931, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14259,6 +14245,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1422225979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2090101531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090101528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d47c3181bccf1945a1b4b5447ab8e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 1, b: 1, a: 1}
+  outlineSize: 1
 --- !u!224 &2113908943 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1127573995826686694, guid: 10090517b0ea82a4fa4ec5dc6d9e630d, type: 3}

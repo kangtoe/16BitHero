@@ -15,7 +15,7 @@ public class OutlineManager : MonoSingleton<OutlineManager>
             Debug.LogError("Outline Material is not set");
             return;
         }
-        
+
         spriteRenderer.material = outlineMaterial;
     }
 
@@ -29,9 +29,9 @@ public class OutlineManager : MonoSingleton<OutlineManager>
         MaterialPropertyBlock mpb = new MaterialPropertyBlock();
         {
             sprite.GetPropertyBlock(mpb);
-            mpb.SetFloat("_Outline", outline ? 1f : 0);
-            mpb.SetColor("_OutlineColor", color);
-            mpb.SetFloat("_OutlineSize", outlineSize);
+            mpb.SetFloat("_Line", outline ? 1f : 0);
+            mpb.SetColor("_LineColor", color);
+            mpb.SetFloat("_LineSize", outlineSize);
             sprite.SetPropertyBlock(mpb);
         }                
     }
