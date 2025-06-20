@@ -64,6 +64,8 @@ public abstract class CharacterBase : MonoBehaviour
     protected virtual void Start()
     {
         CurrHealth = maxHealth;
+        OutlineManager.Instance.SetOutlineMaterial(spriteRenderer);
+        //OutlineManager.Instance.SetOutline(spriteRenderer, true); // debug code
     }
 
     public virtual void TakeDamage(Vector3 hitPoint, int damage, bool isCriticalHit = false)
