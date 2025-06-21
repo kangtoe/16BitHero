@@ -32,7 +32,7 @@ public class EnemyBase : CharacterBase
     protected override void Start()
     {
         base.Start();
-        CurrHealth = maxHealth;    
+        CurrHealth = maxHealth;
 
         if (Player == null)
         {
@@ -47,7 +47,7 @@ public class EnemyBase : CharacterBase
 
     protected virtual void Update()
     {
-        if (!IsActive) return;            
+        if (!IsActive) return;
 
         MoveCheck(Time.deltaTime);
         AttackCheck(Time.deltaTime);
@@ -55,23 +55,23 @@ public class EnemyBase : CharacterBase
 
     protected virtual void AttackCheck(float deltaTime)
     {
-        if(attackCooldown > 0f) attackCooldown -= deltaTime;         
+        if (attackCooldown > 0f) attackCooldown -= deltaTime;
         else
         {
             Collider2D coll = Physics2D.OverlapCircle(
-                CenterPos + attackAreaOffset, 
-                attackRange, 
+                CenterPos + attackAreaOffset,
+                attackRange,
                 1 << Player.gameObject.layer);
-            if(coll)
+            if (coll)
             {
                 Attack();
                 attackCooldown = attackDelay;
-            }         
-        }   
+            }
+        }
     }
 
     protected virtual void Attack()
-    {                
+    {
         Vector2 hitPoint = characterCollider.ClosestPoint(Player.CharacterCollider.bounds.center);
         Player.TakeDamage(hitPoint, damage);
         //Player.Knockback(LookDir);
@@ -80,39 +80,47 @@ public class EnemyBase : CharacterBase
     protected virtual void MoveCheck(float deltaTime)
     {
         bool isCloseEnough = (Player.transform.position - transform.position).magnitude < 0.5f;
-        if(isCloseEnough) Move(Vector2.zero);
+        if (isCloseEnough) Move(Vector2.zero);
         else
         {
-            Vector2 direction = (Player.transform.position - transform.position).normalized;        
+            Vector2 direction = (Player.transform.position - transform.position).normalized;
             Move(direction * moveSpeed * deltaTime);
         }
     }
 
     protected override void Die()
     {
+        if (isDead) return;
+
         base.Die();
         DropManager.Instance.DropItem(transform.position, coinDropAmount, chestDropAmount, potionDropAmount, diamondDropAmount);
     }
 
-    override protected void SetCharacterSize() 
+    public void ForceDie(bool reward)
+    {
+        if (reward) Die();
+        else base.Die();
+    }
+
+    override protected void SetCharacterSize()
     {
         base.SetCharacterSize();
 
         float _attackRange = attackRange;
 
-        switch(characterSize)
+        switch (characterSize)
         {
             case CharacterSize.Small:
                 _attackRange = 0.3f;
-                
+
                 break;
             case CharacterSize.Medium:
                 _attackRange = 0.45f;
-                
+
                 break;
             case CharacterSize.Large:
                 _attackRange = 0.65f;
-                
+
                 break;
         }
 

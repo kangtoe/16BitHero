@@ -10,7 +10,7 @@ public abstract class CharacterBase : MonoBehaviour
     protected enum CharacterSize
     {
         Medium = 0,
-        Small,        
+        Small,
         Large
     }
     [SerializeField] protected CharacterSize characterSize = CharacterSize.Medium;
@@ -19,25 +19,30 @@ public abstract class CharacterBase : MonoBehaviour
 
     [SerializeField] protected bool showDamageText = true;
 
+    protected bool isDead = false;
+
     [Header("Components")]
-    [SerializeField]protected Rigidbody2D rig;
+    [SerializeField] protected Rigidbody2D rig;
     [SerializeField] protected CapsuleCollider2D characterCollider;
     public CapsuleCollider2D CharacterCollider => characterCollider;
-    [SerializeField]protected Animator animator;
-    [SerializeField]protected SpriteRenderer characterSprite;
-    [SerializeField]protected SpriteRenderer[] outlineSprites;
-    
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected SpriteRenderer characterSprite;
+    [SerializeField] protected SpriteRenderer[] outlineSprites;
+
 
     [Header("Health")]
     [SerializeField] protected int maxHealth = 10;
-    protected int CurrHealth{
-        get{
+    protected int CurrHealth
+    {
+        get
+        {
             return currHealth;
         }
-        set{
+        set
+        {
             currHealth = value;
-            if(healthBar) healthBar.fillAmount = (float)currHealth / maxHealth;
-            if(healthText) healthText.text = $"{currHealth}/{maxHealth}";
+            if (healthBar) healthBar.fillAmount = (float)currHealth / maxHealth;
+            if (healthText) healthText.text = $"{currHealth}/{maxHealth}";
         }
     }
     [SerializeField] protected int currHealth;
@@ -74,7 +79,7 @@ public abstract class CharacterBase : MonoBehaviour
     protected virtual void Start()
     {
         CurrHealth = maxHealth;
-        
+
         OutlineManager.Instance.SetOutlineMaterial(outlineSprites);
         //OutlineManager.Instance.SetOutline(outlineSprites, true); // debug code
 
@@ -90,36 +95,36 @@ public abstract class CharacterBase : MonoBehaviour
     {
         Vector2 uiPos = Vector2.zero;
         bool overheadUI = healthBar?.canvas?.renderMode == RenderMode.WorldSpace;
-        if(overheadUI) uiPos = healthBar.canvas.GetComponent<RectTransform>().anchoredPosition;        
+        if (overheadUI) uiPos = healthBar.canvas.GetComponent<RectTransform>().anchoredPosition;
 
         Vector2 offset = characterCollider.offset;
-        Vector2 size = characterCollider.size;            
+        Vector2 size = characterCollider.size;
 
-        switch(characterSize)
+        switch (characterSize)
         {
             case CharacterSize.Small:
                 uiPos = new Vector2(0, 1f);
 
                 offset = new Vector2(0f, 0.3f);
                 size = new Vector2(0.6f, 0.7f);
-                
+
                 break;
             case CharacterSize.Medium:
                 uiPos = new Vector2(0, 1.5f);
 
                 offset = new Vector2(0f, 0.5f);
                 size = new Vector2(0.7f, 1.0f);
-                
+
                 break;
             case CharacterSize.Large:
                 uiPos = new Vector2(0, 2.0f);
 
                 offset = new Vector2(0f, 0.75f);
                 size = new Vector2(1.2f, 1.6f);
-                
+
                 break;
         }
-        if(overheadUI) healthBar.canvas.GetComponent<RectTransform>().anchoredPosition = uiPos;
+        if (overheadUI) healthBar.canvas.GetComponent<RectTransform>().anchoredPosition = uiPos;
         characterCollider.size = size;
         characterCollider.offset = offset;
     }
@@ -131,12 +136,12 @@ public abstract class CharacterBase : MonoBehaviour
 
         onDamageTaken?.Invoke(damage, transform.position, isCriticalHit);
 
-        if(showDamageText && hitPoint != null)
+        if (showDamageText && hitPoint != null)
         {
             Text3dMaker.Instance.MakeText(
-                damage.ToString(), 
+                damage.ToString(),
                 hitPoint - Vector3.forward, // 표기 지점을 캐릭터 앞으로 조정
-                isCriticalHit? Color.yellow : Color.white);
+                isCriticalHit ? Color.yellow : Color.white);
         }
 
         if (CurrHealth <= 0)
@@ -152,6 +157,9 @@ public abstract class CharacterBase : MonoBehaviour
 
     protected virtual void Die()
     {
+        if (isDead) return;
+        isDead = true;
+
         onDeath?.Invoke(transform.position);
         if (deathParticles)
             Instantiate(deathParticles, CenterPos, Quaternion.identity);
@@ -163,7 +171,7 @@ public abstract class CharacterBase : MonoBehaviour
     {
         if (knockbackCoroutine != null)
             StopCoroutine(knockbackCoroutine);
-            
+
         knockbackCoroutine = StartCoroutine(KnockbackCoroutine(direction));
     }
 
@@ -185,11 +193,11 @@ public abstract class CharacterBase : MonoBehaviour
     }
 
     protected virtual void Move(Vector2 vel)
-    {         
+    {
         if (isKnockback) return;
-        
+
         rig.velocity = vel;
-                
+
         animator?.SetBool("bMove", vel.magnitude > 0);
 
         FlipSpriteCheck(vel);
@@ -203,4 +211,4 @@ public abstract class CharacterBase : MonoBehaviour
             characterSprite.transform.localScale = new Vector3(isFlipped ? -1 : 1, 1, 1);
         }
     }
-} 
+}
