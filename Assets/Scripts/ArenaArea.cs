@@ -5,11 +5,22 @@ using UnityEngine.Tilemaps;
 
 public class ArenaArea : MonoSingleton<ArenaArea>
 {
-    [SerializeField] Tilemap Wall;   
+    [SerializeField] Tilemap Wall;
     Bounds WallBounds;
+    public Bounds wallBounds => WallBounds;
 
     // Start is called before the first frame update
     void Start()
+    {
+        InitWallBound();
+    }
+
+    void OnValidate()
+    {
+        InitWallBound();
+    }
+
+    public void InitWallBound()
     {
         Wall.CompressBounds();
         BoundsInt cb = Wall.cellBounds;
@@ -17,12 +28,6 @@ public class ArenaArea : MonoSingleton<ArenaArea>
             Wall.CellToWorld((cb.min + cb.max) / 2),
             Wall.CellToWorld(cb.max) - Wall.CellToWorld(cb.min)
         );
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public bool CheckInWall(Vector2 point, Vector2? padding = null)
