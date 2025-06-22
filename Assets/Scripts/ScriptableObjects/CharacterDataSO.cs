@@ -11,16 +11,16 @@ public class PlayerCharacterDataSO : ScriptableObject
     [field: SerializeField] public int PurchasePrice { get; private set; }
 
     [SerializeField]
-    PlayerStat stat;
+    PlayerStat baseStat;
 
     void OnValidate()
     {
-        stat.CheckStat();
+        baseStat.CheckStat();
     }
 
     [Button("Init Stat")]
     private void TestFunction()
     {
-        stat.InitStat();
+        baseStat.InitStat();
     }
 }
