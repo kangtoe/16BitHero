@@ -32,10 +32,11 @@ public abstract class CharacterBase : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] protected int maxHealth = 10;
-    protected int CurrHealth
+    protected int? CurrHealth
     {
         get
         {
+            if (currHealth == null) currHealth = maxHealth;
             return currHealth;
         }
         set
@@ -45,7 +46,7 @@ public abstract class CharacterBase : MonoBehaviour
             if (healthText) healthText.text = $"{currHealth}/{maxHealth}";
         }
     }
-    [SerializeField] protected int currHealth;
+    [SerializeField] protected int? currHealth = null;
     [SerializeField] protected Image healthBar;
     [SerializeField] protected Text healthText;
 
@@ -78,8 +79,6 @@ public abstract class CharacterBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        CurrHealth = maxHealth;
-
         OutlineManager.Instance.SetOutlineMaterial(outlineSprites);
         //OutlineManager.Instance.SetOutline(outlineSprites, true); // debug code
 
@@ -131,7 +130,7 @@ public abstract class CharacterBase : MonoBehaviour
 
     public virtual void TakeDamage(Vector3 hitPoint, int damage, bool isCriticalHit = false)
     {
-        int realDamage = Mathf.Min(damage, CurrHealth);
+        int realDamage = Mathf.Min(damage, CurrHealth.Value);
         CurrHealth -= realDamage;
 
         onDamageTaken?.Invoke(damage, transform.position, isCriticalHit);
