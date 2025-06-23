@@ -48,6 +48,11 @@ public class PlayerStat
     private List<StatPair> stats = new List<StatPair>();
     public List<StatPair> Stats => stats;
 
+    public int GetStatValue(PlayerStatType statType)
+    {
+        return stats.FirstOrDefault(s => s.statType == statType).value;
+    }
+
     public PlayerStat GetAddedStats(PlayerStat other)
     {
         CheckStat();
@@ -58,8 +63,7 @@ public class PlayerStat
         {
             var stat = stats[i];
             // other에서 같은 statType의 값을 찾아 더함
-            var otherStat = other.stats.FirstOrDefault(s => s.statType == stat.statType);
-            stat.value += otherStat.value;
+            stat.value += other.GetStatValue(stat.statType);
             _stats.Add(stat);
         }
         return new PlayerStat(_stats);
@@ -87,8 +91,7 @@ public class PlayerStat
         {
             var stat = stats[i];
             // other에서 같은 statType의 값을 찾아 곱함
-            var otherStat = other.stats.FirstOrDefault(s => s.statType == stat.statType);
-            stat.value *= otherStat.value;
+            stat.value *= other.GetStatValue(stat.statType);
             _stats.Add(stat);
         }
         return new PlayerStat(_stats);

@@ -147,6 +147,34 @@ public abstract class CharacterBase : MonoBehaviour
             Die();
     }
 
+    void InitHealth(int _maxHealth)
+    {
+        maxHealth = _maxHealth;
+        CurrHealth = maxHealth;
+    }
+
+    public void AdjustMaxHealth(int new_maxHealth)
+    {
+        // 초기화 되지 않은 상태에서 최초 실행 시
+        if (currHealth == null)
+        {
+            InitHealth(new_maxHealth);
+            return;
+        }
+
+        int adjust = new_maxHealth - maxHealth;
+        maxHealth += adjust;
+
+        if (maxHealth < new_maxHealth)
+        {
+            Heal(adjust);
+        }
+        else if (maxHealth > new_maxHealth)
+        {
+            if (CurrHealth > maxHealth) CurrHealth = maxHealth;
+        }
+    }
+
     public virtual void Heal(int amount)
     {
         CurrHealth += amount;

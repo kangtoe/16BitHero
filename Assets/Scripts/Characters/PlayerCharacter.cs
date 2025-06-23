@@ -7,12 +7,17 @@ public class PlayerCharacter : CharacterBase
     [SerializeField] MobileJoystick playerJoystick;
 
     [Header("Collect")]
-    [SerializeField] float autoCollectRadius = 1f;    
-    [SerializeField] float autoCollectPower = 10f;  
+    [SerializeField] float autoCollectRadius = 1f;
+    [SerializeField] float autoCollectPower = 10f;
 
-    [Header("Level")] 
+    [Header("Level")]
     [SerializeField] PlayerLevel playerLevel;
     public PlayerLevel PlayerLevel => playerLevel;
+
+    void Update()
+    {
+        Debug.Log(currHealth);
+    }
 
     private void FixedUpdate()
     {
@@ -30,7 +35,7 @@ public class PlayerCharacter : CharacterBase
         {
             DropItemBase item = col.GetComponent<DropItemBase>();
             if (!item || !item.IsAutoCollectable) continue;
-            
+
             Vector3 direction = (CenterPos - (Vector2)col.transform.position).normalized;
             item.transform.position += direction * autoCollectPower * deltaTime;
         }
@@ -41,4 +46,8 @@ public class PlayerCharacter : CharacterBase
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(CenterPos, autoCollectRadius);
     }
+
+
+
+
 }

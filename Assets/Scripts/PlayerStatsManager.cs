@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerStatsManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class PlayerStatsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        UpdateStats();
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     void OnValidate()
     {
-        UpdateStats();
+        //UpdateStats();
     }
 
     void UpdateStats()
@@ -36,5 +37,13 @@ public class PlayerStatsManager : MonoBehaviour
         var modifyPercent = playerCharacter.StatModifier.GetAddedStats(100);
         currPlayerStat = sumStats.GetMultipliedStats(modifyPercent);
         currPlayerStat = currPlayerStat.GetMultipliedStats(0.01f);
+
+        int maxHealth = currPlayerStat.GetStatValue(PlayerStatType.MaxHealth);
+        GameManager.Instance.Player.AdjustMaxHealth(maxHealth);
+    }
+
+    void UpdateStat()
+    {
+
     }
 }

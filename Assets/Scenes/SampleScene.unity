@@ -11691,7 +11691,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.806
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -11950,6 +11950,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCharacter: {fileID: 11400000, guid: 7d62f7c50bf628a4d9eb64cdf015d735, type: 2}
+  currPlayerStat:
+    stats:
+    - desc: 'Damage: 0'
+      statType: 0
+      value: 0
+    - desc: 'MeleeAttack: 0'
+      statType: 1
+      value: 0
+    - desc: 'RangeAttack: 0'
+      statType: 2
+      value: 0
+    - desc: 'AttackSpeed: 0'
+      statType: 3
+      value: 0
+    - desc: 'CriticalChance: 0'
+      statType: 4
+      value: 0
+    - desc: 'CriticalMultiplier: 0'
+      statType: 5
+      value: 0
+    - desc: 'MoveSpeed: 0'
+      statType: 6
+      value: 0
+    - desc: 'MaxHealth: 150'
+      statType: 7
+      value: 150
+    - desc: 'Range: 0'
+      statType: 8
+      value: 0
+    - desc: 'HealthRecoverySpeed: 0'
+      statType: 9
+      value: 0
+    - desc: 'Armor: 0'
+      statType: 10
+      value: 0
+    - desc: 'Luck: 0'
+      statType: 11
+      value: 0
+    - desc: 'Dodge: 0'
+      statType: 12
+      value: 0
+    - desc: 'LifeSteal: 0'
+      statType: 13
+      value: 0
 --- !u!1 &864326203
 GameObject:
   m_ObjectHideFlags: 0
@@ -13063,8 +13107,7 @@ MonoBehaviour:
   animator: {fileID: 972461165}
   characterSprite: {fileID: 0}
   outlineSprites: []
-  maxHealth: 10000
-  currHealth: 0
+  maxHealth: 99
   healthBar: {fileID: 837227476}
   healthText: {fileID: 230414785}
   moveSpeed: 60
