@@ -10,17 +10,21 @@ public class PlayerCharacterDataSO : ScriptableObject
     [field: SerializeField] public Sprite Sprite { get; private set; }
     [field: SerializeField] public int PurchasePrice { get; private set; }
 
-    [SerializeField]
-    PlayerStat baseStat;
+    [SerializeField] PlayerStat baseStatAdjust;
+    public PlayerStat BaseStatAdjust => baseStatAdjust;
+    [SerializeField] PlayerStat statModifier;
+    public PlayerStat StatModifier => statModifier;
 
     void OnValidate()
     {
-        baseStat.CheckStat();
+        baseStatAdjust.CheckStat();
+        statModifier.CheckStat();
     }
 
-    [Button("Init Stat")]
+    [Button("Init Stats")]
     private void TestFunction()
     {
-        baseStat.InitStat();
+        baseStatAdjust.InitStat();
+        statModifier.InitStat();
     }
 }
