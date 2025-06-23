@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PlayerStatsManager : MonoBehaviour
+public class PlayerStatsManager : MonoSingleton<PlayerStatsManager>
 {
     [SerializeField]
     PlayerCharacterDataSO playerCharacter;
@@ -12,7 +12,9 @@ public class PlayerStatsManager : MonoBehaviour
 
 
     [SerializeField] // for debug
-    PlayerStat currPlayerStat = new PlayerStat();
+    static PlayerStat currPlayerStat = new PlayerStat();
+
+    static public PlayerStat CurrPlayerStat => currPlayerStat;
 
     // Start is called before the first frame update
     void Start()

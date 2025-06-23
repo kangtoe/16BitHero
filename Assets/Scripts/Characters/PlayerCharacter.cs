@@ -47,7 +47,25 @@ public class PlayerCharacter : CharacterBase
         Gizmos.DrawWireSphere(CenterPos, autoCollectRadius);
     }
 
+    public override void TakeDamage(Vector3 hitPoint, int damage, bool isCriticalHit = false)
+    {
+        int dodge = PlayerStatsManager.CurrPlayerStat.GetStatValue(PlayerStatType.Dodge);
+        if (dodge > Random.Range(1, 101))
+        {
+            if (hitPoint != null)
+            {
+                Text3dMaker.Instance.MakeText(
+                    "DODGE",
+                    hitPoint - Vector3.forward, // 표기 지점을 캐릭터 앞으로 조정
+                    Color.white);
+            }
+            return;
+        }
 
+        base.TakeDamage(hitPoint, damage, isCriticalHit);
+
+
+    }
 
 
 }
