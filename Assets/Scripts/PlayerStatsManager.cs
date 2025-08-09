@@ -16,6 +16,9 @@ public class PlayerStatsManager : MonoSingleton<PlayerStatsManager>
 
     static public PlayerStat CurrPlayerStat => currPlayerStat;
 
+    [SerializeField]
+    StatUI statUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,8 @@ public class PlayerStatsManager : MonoSingleton<PlayerStatsManager>
 
         int maxHealth = currPlayerStat.GetStatValue(PlayerStatType.MaxHealth);
         GameManager.Instance.Player.AdjustMaxHealth(maxHealth);
+
+        statUI.UpdateStatsUI(currPlayerStat);
     }
 
     void UpdateStat()
