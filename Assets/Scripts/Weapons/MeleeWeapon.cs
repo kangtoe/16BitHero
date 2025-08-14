@@ -9,24 +9,25 @@ public class MeleeWeapon : WeaponBase
 
     [Header(" Settings ")]
     private List<CharacterBase> damagedCharacters = new List<CharacterBase>();
-    
+
     void Start()
     {
         state = State.Idle;
     }
 
-    protected override void TryAttack()
+    protected override bool TryAttack()
     {
-        base.TryAttack();
+        if (!base.TryAttack()) return false;
 
-        damagedCharacters.Clear();        
+        damagedCharacters.Clear();
         state = State.OnProcess;
-        
+
         StartCoroutine(ThrustIE(range));
+        return true;
     }
 
-    IEnumerator ThrustIE(float thrustDistance = 1f,float thrustDuration = 0.1f, float returnDuration = 0.2f)
-    {            
+    IEnumerator ThrustIE(float thrustDistance = 1f, float thrustDuration = 0.1f, float returnDuration = 0.2f)
+    {
         hitCollider.enabled = true;
 
         Vector3 start = hitCollider.transform.localPosition;
@@ -36,7 +37,7 @@ public class MeleeWeapon : WeaponBase
         bool forwardDone = false;
         LeanTween.moveLocal(hitCollider.gameObject, target, thrustDuration)
             .setEase(LeanTweenType.easeOutQuad)
-            .setOnComplete(() => 
+            .setOnComplete(() =>
             {
                 forwardDone = true;
                 hitCollider.enabled = false;
@@ -47,20 +48,20 @@ public class MeleeWeapon : WeaponBase
         // 복귀
         LeanTween.moveLocal(hitCollider.gameObject, start, returnDuration)
             .setEase(LeanTweenType.easeInQuad)
-            .setOnComplete(() => EndAttack());            
+            .setOnComplete(() => EndAttack());
     }
 
     private void EndAttack()
     {
-        state = State.Idle;        
-        damagedCharacters.Clear();        
+        state = State.Idle;
+        damagedCharacters.Clear();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (((1 << collision.gameObject.layer) & targetMask) == 0) return;
         CharacterBase target = collision.GetComponent<CharacterBase>();
-        if(!target) return;        
+        if (!target) return;
         if (damagedCharacters.Contains(target)) return;
 
         // 충돌 지점 계산
@@ -70,10 +71,10 @@ public class MeleeWeapon : WeaponBase
         target.TakeDamage(hitPoint, damage, isCriticalHit);
         damagedCharacters.Add(target);
 
-        if(knockback > 0f)
+        if (knockback > 0f)
         {
             Vector2 direction = (target.transform.position - transform.position).normalized;
             target.Knockback(direction * knockback);
         }
-    }    
+    }
 }

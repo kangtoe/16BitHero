@@ -68,13 +68,12 @@
     "editor.quickSuggestionsDelay": 10,
     "editor.suggestOnTriggerCharacters": true,
     "editor.tabCompletion": "on",
-    "editor.wordBasedSuggestions": true,
+    "editor.wordBasedSuggestions": "matchingDocuments",
     "editor.parameterHints.enabled": true,
     "editor.hover.enabled": true,
     "editor.hover.delay": 300,
     "omnisharp.enableRoslynAnalyzers": true,
     "omnisharp.enableEditorConfigSupport": true,
-    "omnisharp.enableImportCompletion": true,
     "omnisharp.enableAsyncCompletion": true,
     "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
     "files.associations": {
@@ -83,6 +82,7 @@
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    }
+        "source.organizeImports": "explicit"
+    },
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true
 }
