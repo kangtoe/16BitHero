@@ -7,7 +7,7 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
     [field: SerializeField] public WeaponDataSO WeaponData { get; private set; }
 
     [Header("Settings")]
-    [SerializeField] protected LayerMask targetMask;    
+    [SerializeField] protected LayerMask targetMask;
     [SerializeField] protected float range = 1f;
     public float Range => range;
 
@@ -51,7 +51,7 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
     protected void Awake()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-        if(audioSource)
+        if (audioSource)
         {
             audioSource.playOnAwake = false;
             audioSource.clip = WeaponData?.AttackSound ?? null;
@@ -65,26 +65,31 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
     {
         switch (state)
         {
-            case State.Idle:       
-                if(attackCooldown > 0) attackCooldown -= Time.deltaTime;
+            case State.Idle:
+                if (attackCooldown > 0) attackCooldown -= Time.deltaTime;
                 target = GetClosestTarget(range);
-                AutoAim(Time.deltaTime);                
-                if(target && attackCooldown <= 0)
-                {                                         
-                    attackCooldown = attackDelay;
-                    TryAttack();
-                }                         
+                AutoAim(Time.deltaTime);
+                if (target && attackCooldown <= 0)
+                {
+                    if (TryAttack())
+                    {
+                        attackCooldown = attackDelay;
+                        state = State.OnProcess;
+                    }
+                }
                 break;
 
-            case State.OnProcess:                
+            case State.OnProcess:
                 break;
-        }        
+        }
     }
 
-    protected virtual void TryAttack()
+    protected virtual bool TryAttack()
     {
-        if(state == State.OnProcess) return;
+        if (state == State.OnProcess) return false;
+
         PlayAttackSound();
+        return true;
     }
 
     protected void PlayAttackSound()
@@ -97,7 +102,7 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
     }
 
     protected void AutoAim(float deltaTime)
-    {    
+    {
         Vector2 targetVector = Vector3.right;
 
         if (target)
@@ -113,13 +118,13 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
             if (shouldFlip)
             {
                 transform.rotation = Quaternion.Euler(0, 0, angle + 180);
-            } 
+            }
         }
         else
         {
-            shouldFlip = owner.IsFlipped;                        
+            shouldFlip = owner.IsFlipped;
             transform.right = Vector3.Lerp(transform.right, targetVector, deltaTime * 10);
-        }        
+        }
 
         // 스프라이트 반전
         transform.localScale = new Vector3(
@@ -135,13 +140,13 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
         CharacterBase closestTarget = null;
 
         Collider2D[] targetList = Physics2D.OverlapCircleAll(transform.position, range, targetMask);
-        if (targetList.Length <= 0) return null;        
-            
+        if (targetList.Length <= 0) return null;
+
         float minDistance = range;
         for (int i = 0; i < targetList.Length; i++)
         {
             CharacterBase newTarget = targetList[i].GetComponent<CharacterBase>();
-            if(!newTarget) continue;
+            if (!newTarget) continue;
 
             float distanceToTarget = Vector2.Distance(transform.position, newTarget.transform.position);
 
@@ -173,7 +178,7 @@ public abstract class WeaponBase : MonoBehaviour//, IPlayerStatsDependency
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, range);
     }
-    
+
     // public override void UpdateStats(PlayerStatsManager playerStatsManager)
     // {
     //     ConfigureStats();
