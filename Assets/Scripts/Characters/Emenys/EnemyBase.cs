@@ -18,16 +18,21 @@ public class EnemyBase : CharacterBase
     [SerializeField] protected SpriteRenderer spawnIndicator;
     protected bool hasSpawned = true; // true for debug
 
+    [Header("Warning System")]
+    [SerializeField] protected GameObject warningIndicator; // '!' 스프라이트
+    [SerializeField] protected float warningDelay = 0.5f; // 경고를 표시할 쿨다운 임계값 (초)
+    protected float warningTimer = 0f;
+    protected bool isAttacking = false; // 경고 중이거나 발사 중
+
     [Header("Melee Attack")]
+    [SerializeField] protected float meleeAttackRange = 1;
+    [SerializeField] protected Vector2 meleeAttackAreaOffset;
     [SerializeField] protected int damage = 1;
     [SerializeField] protected float attackFrequency = 1f;
     protected float attackDelay;
     protected float attackCooldown;
-    [SerializeField] protected float attackRange = 1;
-    [SerializeField] protected Vector2 attackAreaOffset;
 
     protected virtual Vector2 LookDir => (Player.transform.position - transform.position).normalized;
-    bool isPlayerInAttackArea = false;
 
     protected override void Start()
     {
@@ -59,8 +64,8 @@ public class EnemyBase : CharacterBase
         else
         {
             Collider2D coll = Physics2D.OverlapCircle(
-                CenterPos + attackAreaOffset,
-                attackRange,
+                CenterPos + meleeAttackAreaOffset,
+                meleeAttackRange,
                 1 << Player.gameObject.layer);
             if (coll)
             {
@@ -106,7 +111,7 @@ public class EnemyBase : CharacterBase
     {
         base.SetCharacterSize();
 
-        float _attackRange = attackRange;
+        float _attackRange = meleeAttackRange;
 
         switch (characterSize)
         {
@@ -124,7 +129,7 @@ public class EnemyBase : CharacterBase
                 break;
         }
 
-        attackRange = _attackRange;
+        meleeAttackRange = _attackRange;
     }
 
     private void StartSpawnSequence()
@@ -153,6 +158,6 @@ public class EnemyBase : CharacterBase
     protected virtual void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(CenterPos + attackAreaOffset, attackRange);
+        Gizmos.DrawWireSphere(CenterPos + meleeAttackAreaOffset, meleeAttackRange);
     }
 }

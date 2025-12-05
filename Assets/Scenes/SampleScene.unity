@@ -2576,6 +2576,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1710743569}
     - target: {fileID: 633767607265014716, guid: a236769b89ea8cc4cbc0f542224c2303, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 633767607265014716, guid: a236769b89ea8cc4cbc0f542224c2303, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633767607265014716, guid: a236769b89ea8cc4cbc0f542224c2303, type: 3}
       propertyPath: attackDelay
       value: 0.1
       objectReference: {fileID: 0}
@@ -15543,8 +15551,8 @@ MonoBehaviour:
   waveInfos:
   - desc: Wave0
     spawnInfos:
-    - desc: 'Wave0 -> Spawn: Enemy_orkWarrior'
-      enemyBase: {fileID: 8903124041193114433, guid: 7db9257ab18848d4696e509ecd15b074, type: 3}
+    - desc: 'Wave0 -> Spawn: Enemy_orkShaman'
+      enemyBase: {fileID: 4498220510218964578, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
       spawnChance: 100
       spawnStartTime: 1
       spawnInterval: 3
@@ -17138,6 +17146,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767030785}
   m_CullTransparentMesh: 1
+--- !u!1001 &1771348956
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1190948216138437352, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_Name
+      value: Enemy_orkShaman
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.9914234
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.6820617
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423227726413154496, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b7f169d42a3a0f4fbe5aba1e1350b55, type: 3}
 --- !u!1 &1792242141
 GameObject:
   m_ObjectHideFlags: 0
@@ -18282,3 +18347,4 @@ SceneRoots:
   - {fileID: 1615502707}
   - {fileID: 140708552}
   - {fileID: 864326204}
+  - {fileID: 1771348956}

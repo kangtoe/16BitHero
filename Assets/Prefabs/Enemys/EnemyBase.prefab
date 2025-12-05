@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2106307473
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f052d758192edae4fa301133b34da230, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -224,7 +224,6 @@ MonoBehaviour:
   characterSprite: {fileID: 0}
   outlineSprites: []
   maxHealth: 1
-  currHealth: 0
   healthBar: {fileID: 4071856794555866987}
   healthText: {fileID: 2869218567559655858}
   moveSpeed: 10
@@ -234,10 +233,12 @@ MonoBehaviour:
   potionDropAmount: 0
   diamondDropAmount: 0
   spawnIndicator: {fileID: 2975969661022248270, guid: 9177aa0459ab4054f84c8aac9c5df7b0, type: 3}
+  warningIndicator: {fileID: 669142986751350028}
+  warningDelay: 0.5
+  meleeAttackRange: 0.45
+  meleeAttackAreaOffset: {x: 0, y: 0}
   damage: 1
   attackFrequency: 1
-  attackRange: 0.45
-  attackAreaOffset: {x: 0, y: 0}
 --- !u!1001 &3913921471825411318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,10 +247,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5047146827663668231}
     m_Modifications:
-    - target: {fileID: 956201207655931658, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1578938315266999761, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -330,27 +327,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2100469735447405451, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
-      propertyPath: m_Layer
-      value: 8
+    - target: {fileID: 1750064366495042903, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750064366495042903, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750064366495042903, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
+      propertyPath: m_EffectDistance.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546468310999329274, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5124078151127939661, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
       propertyPath: m_Name
-      value: HealthUI
+      value: UIs
       objectReference: {fileID: 0}
-    - target: {fileID: 5124078151127939661, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
-      propertyPath: m_Layer
-      value: 8
+    - target: {fileID: 8780189002741814749, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 140
       objectReference: {fileID: 0}
-    - target: {fileID: 6075864224042013386, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
-      propertyPath: m_Layer
-      value: 8
+    - target: {fileID: 8780189002741814749, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 140
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
+--- !u!1 &669142986751350028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4546468310999329274, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
+  m_PrefabInstance: {fileID: 3913921471825411318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2573964276634171687 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1578938315266999761, guid: a39863a2cc135a14f9ba57112ebf2e8e, type: 3}
