@@ -5,11 +5,11 @@ using UnityEngine.Pool;
 public class RangedEnemy : EnemyBase
 {
     [Header("Ranged Attack")]
-    [SerializeField] float rangedAttackRange = 5.0f;
-    [SerializeField] Bullet bulletPrefab;
-    [SerializeField] Transform firePoint;
-    [SerializeField] float bulletSpeed = 3.0f;
-    [SerializeField] int bulletDamage = 2;
+    [SerializeField] protected float rangedAttackRange = 5.0f;
+    [SerializeField] protected Bullet bulletPrefab;
+    [SerializeField] protected Transform firePoint;
+    [SerializeField] protected float bulletSpeed = 3.0f;
+    [SerializeField] protected int bulletDamage = 2;
 
     ObjectPool<Bullet> bulletPool;
 
