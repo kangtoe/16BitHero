@@ -2581,7 +2581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 633767607265014716, guid: a236769b89ea8cc4cbc0f542224c2303, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 633767607265014716, guid: a236769b89ea8cc4cbc0f542224c2303, type: 3}
       propertyPath: attackDelay
@@ -15551,8 +15551,8 @@ MonoBehaviour:
   waveInfos:
   - desc: Wave0
     spawnInfos:
-    - desc: 'Wave0 -> Spawn: Enemy_orkMask'
-      enemyBase: {fileID: 6595032030528218813, guid: 6b665374fd27a3941ad23be04d80f16a, type: 3}
+    - desc: 'Wave0 -> Spawn: Enemy_zombieBig'
+      enemyBase: {fileID: 2977221649282370356, guid: 3ffd399aa1327c144bffa12ad7a5f1f4, type: 3}
       spawnChance: 100
       spawnStartTime: 1
       spawnInterval: 3
