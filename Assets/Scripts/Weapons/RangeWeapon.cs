@@ -144,6 +144,12 @@ public class RangeWeapon : WeaponBase
 
         // 복귀
         LeanTween.moveLocal(spriteRenderer.gameObject, start, recoilReturnDuration)
-            .setEase(LeanTweenType.easeInQuad);
+            .setEase(LeanTweenType.easeInQuad)
+            .setOnComplete(() => EndAttack());
+    }
+    
+    void EndAttack()
+    {
+        state = State.Idle;
     }
 }
