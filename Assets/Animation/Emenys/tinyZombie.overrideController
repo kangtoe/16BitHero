@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: tinyZombie
+  m_Controller: {fileID: 9100000, guid: 56891bcb71bf39e4ca9b90b2e9f45f80, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e1da8f4b62a54d649a3a421c31d231ff, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7fe53d782f8b53e47ad23f29dacc51e7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 58c46a6dded7d454b8da59f2930c4aef, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f7ac318cac5c3744ba7532d335bf2a01, type: 2}
