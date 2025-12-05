@@ -110,10 +110,11 @@ public class RangedEnemy : EnemyBase
         // 플레이어와의 거리 계산
         float distanceToPlayer = Vector2.Distance(transform.position, Player.transform.position);
 
-        // 공격 범위 안에 있으면 정지
+        // 공격 범위 안에 있으면 정지하지만 플레이어를 바라봄
         if (distanceToPlayer <= rangedAttackRange)
         {
             Move(Vector2.zero);
+            LookAtPlayer(); // 플레이어를 바라봄
         }
         else
         {

@@ -93,6 +93,13 @@ public class EnemyBase : CharacterBase
         }
     }
 
+    protected void LookAtPlayer()
+    {
+        if (Player == null) return;
+        Vector2 direction = (Player.transform.position - transform.position).normalized;
+        FlipSpriteCheck(direction);
+    }
+
     protected override void Die()
     {
         if (isDead) return;
