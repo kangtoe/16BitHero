@@ -45,6 +45,9 @@ public class EnemyBase : CharacterBase
         base.Start();
         CurrHealth = maxHealth;
 
+        if (warningIndicator != null)
+            warningIndicator.SetActive(false);
+
         // 아웃라인 머티리얼 설정
         if (characterSprite != null)
         {
