@@ -34,10 +34,22 @@ public class EnemyBase : CharacterBase
 
     protected virtual Vector2 LookDir => (Player.transform.position - transform.position).normalized;
 
-    protected override void Start()
+    [Header("Buff System")]
+    protected bool isBuffed = false;
+    protected float buffSpeedMultiplier = 1f;
+    protected float buffDamageMultiplier = 1f;
+    protected float buffDurationTimer = 0f;
+
+    protected virtual void Start()
     {
         base.Start();
         CurrHealth = maxHealth;
+
+        // 아웃라인 머티리얼 설정
+        if (characterSprite != null)
+        {
+            OutlineManager.Instance.SetOutlineMaterial(characterSprite);
+        }
 
         if (Player == null)
         {
@@ -54,8 +66,52 @@ public class EnemyBase : CharacterBase
     {
         if (!IsActive) return;
 
+        UpdateBuffState(Time.deltaTime);
+
         MoveCheck(Time.deltaTime);
         AttackCheck(Time.deltaTime);
+    }
+
+    // --- Buff System Methods ---
+
+    public void ApplyBuff(float speedMult, float damageMult, float duration = 0.5f)
+    {
+        isBuffed = true;
+        buffSpeedMultiplier = speedMult;
+        buffDamageMultiplier = damageMult;
+        buffDurationTimer = duration; // 타이머 갱신 (지속시간 연장)
+
+        // 아웃라인 켜기
+        if (characterSprite != null)
+        {
+            OutlineManager.Instance.SetOutline(characterSprite, true);
+        }
+    }
+
+    public void RemoveBuff()
+    {
+        isBuffed = false;
+        buffSpeedMultiplier = 1f;
+        buffDamageMultiplier = 1f;
+        buffDurationTimer = 0f;
+
+        // 아웃라인 끄기
+        if (characterSprite != null)
+        {
+            OutlineManager.Instance.SetOutline(characterSprite, false);
+        }
+    }
+
+    protected void UpdateBuffState(float deltaTime)
+    {
+        if (isBuffed)
+        {
+            buffDurationTimer -= deltaTime;
+            if (buffDurationTimer <= 0f)
+            {
+                RemoveBuff();
+            }
+        }
     }
 
     protected virtual void AttackCheck(float deltaTime)
@@ -78,7 +134,11 @@ public class EnemyBase : CharacterBase
     protected virtual void Attack()
     {
         Vector2 hitPoint = characterCollider.ClosestPoint(Player.CharacterCollider.bounds.center);
-        Player.TakeDamage(hitPoint, damage);
+
+        // 버프 적용된 데미지 계산
+        int finalDamage = Mathf.RoundToInt(damage * buffDamageMultiplier);
+
+        Player.TakeDamage(hitPoint, finalDamage);
         //Player.Knockback(LookDir);
     }
 
@@ -89,7 +149,10 @@ public class EnemyBase : CharacterBase
         else
         {
             Vector2 direction = (Player.transform.position - transform.position).normalized;
-            Move(direction * moveSpeed * deltaTime);
+            // 버프 적용된 이동 속도 계산
+            float finalSpeed = moveSpeed * buffSpeedMultiplier;
+
+            Move(direction * finalSpeed * deltaTime);
         }
     }
 

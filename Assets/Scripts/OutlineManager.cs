@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OutlineManager : MonoSingleton<OutlineManager>
-{   
+{
     [SerializeField] Material outlineMaterial;
     [SerializeField] Color color = Color.white;
-    [Range(0, 16)] [SerializeField] int outlineSize = 1;    
+    [Range(0, 16)][SerializeField] int outlineSize = 1;
+
+    public void SetOutlineMaterial(SpriteRenderer spriteRenderer)
+    {
+        if (!outlineMaterial)
+        {
+            Debug.LogError("Outline Material is not set");
+            return;
+        }
+
+        spriteRenderer.material = outlineMaterial;
+    }
 
     public void SetOutlineMaterial(SpriteRenderer[] spriteRenderers)
     {
-        if(!outlineMaterial)
+        if (!outlineMaterial)
         {
             Debug.LogError("Outline Material is not set");
             return;
@@ -22,11 +33,16 @@ public class OutlineManager : MonoSingleton<OutlineManager>
         }
     }
 
+    public void SetOutline(SpriteRenderer spriteRenderer, bool isOutline)
+    {
+        UpdateOutline(spriteRenderer, isOutline);
+    }
+
     public void SetOutline(SpriteRenderer[] spriteRenderers, bool isOutline)
     {
         foreach (SpriteRenderer spriteRenderer in spriteRenderers)
         {
-            UpdateOutline(spriteRenderer, isOutline);
+            SetOutline(spriteRenderer, isOutline);
         }
     }
 
@@ -39,6 +55,6 @@ public class OutlineManager : MonoSingleton<OutlineManager>
             mpb.SetColor("_LineColor", color);
             mpb.SetFloat("_LineSize", outlineSize);
             sprite.SetPropertyBlock(mpb);
-        }                
+        }
     }
 }

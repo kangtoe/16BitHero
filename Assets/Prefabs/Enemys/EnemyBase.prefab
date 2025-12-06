@@ -221,8 +221,7 @@ MonoBehaviour:
   rig: {fileID: 0}
   characterCollider: {fileID: 3893799357744924392}
   animator: {fileID: 0}
-  characterSprite: {fileID: 0}
-  outlineSprites: []
+  characterSprite: {fileID: 1552732884691319919}
   maxHealth: 1
   healthBar: {fileID: 4071856794555866987}
   healthText: {fileID: 2869218567559655858}
@@ -239,6 +238,7 @@ MonoBehaviour:
   meleeAttackAreaOffset: {x: 0, y: 0}
   damage: 1
   attackFrequency: 1
+  buffColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &3913921471825411318
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public abstract class CharacterBase : MonoBehaviour
     public CapsuleCollider2D CharacterCollider => characterCollider;
     [SerializeField] protected Animator animator;
     [SerializeField] protected SpriteRenderer characterSprite;
-    [SerializeField] protected SpriteRenderer[] outlineSprites;
+    //[SerializeField] protected SpriteRenderer[] outlineSprites;
 
 
     [Header("Health")]
@@ -74,12 +74,12 @@ public abstract class CharacterBase : MonoBehaviour
         characterCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
         characterSprite = GetComponentInChildren<SpriteRenderer>();
-        outlineSprites = GetComponentsInChildren<SpriteRenderer>();
+        //outlineSprites = GetComponentsInChildren<SpriteRenderer>();
     }
 
     protected virtual void Start()
     {
-        OutlineManager.Instance.SetOutlineMaterial(outlineSprites);
+        //OutlineManager.Instance.SetOutlineMaterial(outlineSprites);
         //OutlineManager.Instance.SetOutline(outlineSprites, true); // debug code
 
         SetCharacterSize();

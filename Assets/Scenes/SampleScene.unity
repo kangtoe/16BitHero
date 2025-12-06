@@ -16921,7 +16921,6 @@ MonoBehaviour:
   characterCollider: {fileID: 1710743567}
   animator: {fileID: 972461165}
   characterSprite: {fileID: 0}
-  outlineSprites: []
   maxHealth: 99
   healthBar: {fileID: 837227476}
   healthText: {fileID: 230414785}
