@@ -1,0 +1,867 @@
+fileFormatVersion: 2
+guid: 74f98a92cc2c7b54ead50f841dcc104b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: dungeon_slime_Frame_0
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.6}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 92
+      width: 17
+      height: 15
+    spriteID: 75514623749a5a844b79b8a48c0dda57
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 92}
+  - name: dungeon_slime_Frame_1
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.6}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 115
+      width: 17
+      height: 15
+    spriteID: beb05cb375314084e95d8bd7e8874169
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 115}
+  - name: dungeon_slime_Frame_2
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.6428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 231
+      width: 19
+      height: 14
+    spriteID: e4c6d15b8be43c84e9a9fce4732e9e79
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 231}
+  - name: dungeon_slime_Frame_3
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.6428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 4
+      width: 19
+      height: 14
+    spriteID: 1550124cc2d2d8448bb528877b8c070f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 4}
+  - name: dungeon_slime_Frame_4
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.6428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 26
+      width: 19
+      height: 14
+    spriteID: 8b29639fb9618344294218b73545170a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 26}
+  - name: dungeon_slime_Frame_5
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.6428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 48
+      width: 19
+      height: 14
+    spriteID: 47df209053d8abe4e9979d084aab0e95
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 48}
+  - name: dungeon_slime_Frame_6
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.6}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 138
+      width: 17
+      height: 15
+    spriteID: c55b7e96d11bc7243be714b77db6c2de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 138}
+  - name: dungeon_slime_Frame_7
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.5625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 183
+      width: 17
+      height: 16
+    spriteID: d8b5a0fea1f5cb443b0c4b4325c1311d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 183}
+  - name: dungeon_slime_Frame_8
+    originalName: 
+    pivot: {x: 0.47619048, y: -0.75}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 67
+      y: 4
+      width: 21
+      height: 12
+    spriteID: 91bb2e2ba166325418cced6ad25a07f4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 67, y: 4}
+  - name: dungeon_slime_Frame_9
+    originalName: 
+    pivot: {x: 0.47619048, y: -0.75}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 67
+      y: 24
+      width: 21
+      height: 12
+    spriteID: 17b9400368a6bf14cab96710c952f8e1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 67, y: 24}
+  - name: dungeon_slime_Frame_10
+    originalName: 
+    pivot: {x: 0.47619048, y: -0.75}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 67
+      y: 44
+      width: 21
+      height: 12
+    spriteID: 05d5fc3a2714a8b4fb04702be7857ed5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 67, y: 44}
+  - name: dungeon_slime_Frame_11
+    originalName: 
+    pivot: {x: 0.4666667, y: -0.45000002}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 155
+      width: 15
+      height: 20
+    spriteID: 87d8aa9948caedc419de4142d23c64d1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 155}
+  - name: dungeon_slime_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: -0.45000002}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 77
+      width: 18
+      height: 20
+    spriteID: 7b2dfa529dcb46f42a60e79ac4033875
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 77}
+  - name: dungeon_slime_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: -0.45000002}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 105
+      width: 18
+      height: 20
+    spriteID: a87ce1dbd8345a240b4f0e56f7421266
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 105}
+  - name: dungeon_slime_Frame_14
+    originalName: 
+    pivot: {x: 0.47619048, y: -0.75}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 67
+      y: 64
+      width: 21
+      height: 12
+    spriteID: a3d4385b9170c164b8a4c93c2d717388
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 67, y: 64}
+  - name: dungeon_slime_Frame_15
+    originalName: 
+    pivot: {x: 0.47619048, y: -0.75}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 67
+      y: 84
+      width: 21
+      height: 12
+    spriteID: e8fea1b4082d29a48a762190ebe962b2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 67, y: 84}
+  - name: dungeon_slime_Frame_16
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.5625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 207
+      width: 17
+      height: 16
+    spriteID: 5fa8ee56a1c113446b0660859e8ce59d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 207}
+  - name: dungeon_slime_Frame_17
+    originalName: 
+    pivot: {x: 0.47058824, y: -0.6}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 161
+      width: 17
+      height: 15
+    spriteID: f2206a084da4a6f44868988f49adabbb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 161}
+  - name: dungeon_slime_Frame_18
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.7692308}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 184
+      width: 19
+      height: 13
+    spriteID: 5faf52f41a6006d4b9c8335d52c699d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 184}
+  - name: dungeon_slime_Frame_19
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.6428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 70
+      width: 19
+      height: 14
+    spriteID: 80d58a1dceeedfd49a774f0f3edf2e50
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 70}
+  - name: dungeon_slime_Frame_20
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.7692308}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 205
+      width: 19
+      height: 13
+    spriteID: ee1a814b5afa06b47b69cfc33aeb49a2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 205}
+  - name: dungeon_slime_Frame_21
+    originalName: 
+    pivot: {x: 0.47826087, y: -0.6428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 133
+      width: 23
+      height: 14
+    spriteID: ed0b389e16b1def4792f64a1b9f13af0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 133}
+  - name: dungeon_slime_Frame_22
+    originalName: 
+    pivot: {x: 0.5, y: -0.47058824}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 31
+      width: 26
+      height: 17
+    spriteID: 9ae4fe14e1756af4c8387f6570433ec1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 31}
+  - name: dungeon_slime_Frame_23
+    originalName: 
+    pivot: {x: 0.5, y: -0.36842105}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 28
+      height: 19
+    spriteID: b8c8ca1c3b2b7f74abb384eeeaeee052
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: dungeon_slime_Frame_24
+    originalName: 
+    pivot: {x: 0.5, y: -0.7692308}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 56
+      width: 28
+      height: 13
+    spriteID: a9e124e6ebf42304fb77234be382549c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 56}
+  - name: dungeon_slime_Frame_25
+    originalName: 
+    pivot: {x: 0.5, y: -5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 4
+      width: 28
+      height: 2
+    spriteID: b22723df20eb99942a939d42c68cc79b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 4}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 646362661
+    name: dungeon_slime
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: dungeon_slime_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 8
+        y: 9
+        width: 17
+        height: 15
+      spriteId: 75514623749a5a844b79b8a48c0dda57
+    - name: dungeon_slime_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 8
+        y: 9
+        width: 17
+        height: 15
+      spriteId: beb05cb375314084e95d8bd7e8874169
+    - name: dungeon_slime_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 7
+        y: 9
+        width: 19
+        height: 14
+      spriteId: e4c6d15b8be43c84e9a9fce4732e9e79
+    - name: dungeon_slime_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 7
+        y: 9
+        width: 19
+        height: 14
+      spriteId: 1550124cc2d2d8448bb528877b8c070f
+    - name: dungeon_slime_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 7
+        y: 9
+        width: 19
+        height: 14
+      spriteId: 8b29639fb9618344294218b73545170a
+    - name: dungeon_slime_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 7
+        y: 9
+        width: 19
+        height: 14
+      spriteId: 47df209053d8abe4e9979d084aab0e95
+    - name: dungeon_slime_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 8
+        y: 9
+        width: 17
+        height: 15
+      spriteId: c55b7e96d11bc7243be714b77db6c2de
+    - name: dungeon_slime_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 8
+        y: 9
+        width: 17
+        height: 16
+      spriteId: d8b5a0fea1f5cb443b0c4b4325c1311d
+    - name: dungeon_slime_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 6
+        y: 9
+        width: 21
+        height: 12
+      spriteId: 91bb2e2ba166325418cced6ad25a07f4
+    - name: dungeon_slime_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 6
+        y: 9
+        width: 21
+        height: 12
+      spriteId: 17b9400368a6bf14cab96710c952f8e1
+    - name: dungeon_slime_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 6
+        y: 9
+        width: 21
+        height: 12
+      spriteId: 05d5fc3a2714a8b4fb04702be7857ed5
+    - name: dungeon_slime_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 9
+        y: 9
+        width: 15
+        height: 20
+      spriteId: 87d8aa9948caedc419de4142d23c64d1
+    - name: dungeon_slime_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 7
+        y: 9
+        width: 18
+        height: 20
+      spriteId: 7b2dfa529dcb46f42a60e79ac4033875
+    - name: dungeon_slime_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 7
+        y: 9
+        width: 18
+        height: 20
+      spriteId: a87ce1dbd8345a240b4f0e56f7421266
+    - name: dungeon_slime_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 6
+        y: 9
+        width: 21
+        height: 12
+      spriteId: a3d4385b9170c164b8a4c93c2d717388
+    - name: dungeon_slime_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 6
+        y: 9
+        width: 21
+        height: 12
+      spriteId: e8fea1b4082d29a48a762190ebe962b2
+    - name: dungeon_slime_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 8
+        y: 9
+        width: 17
+        height: 16
+      spriteId: 5fa8ee56a1c113446b0660859e8ce59d
+    - name: dungeon_slime_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 8
+        y: 9
+        width: 17
+        height: 15
+      spriteId: f2206a084da4a6f44868988f49adabbb
+    - name: dungeon_slime_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 7
+        y: 10
+        width: 19
+        height: 13
+      spriteId: 5faf52f41a6006d4b9c8335d52c699d7
+    - name: dungeon_slime_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 7
+        y: 9
+        width: 19
+        height: 14
+      spriteId: 80d58a1dceeedfd49a774f0f3edf2e50
+    - name: dungeon_slime_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 7
+        y: 10
+        width: 19
+        height: 13
+      spriteId: ee1a814b5afa06b47b69cfc33aeb49a2
+    - name: dungeon_slime_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 5
+        y: 9
+        width: 23
+        height: 14
+      spriteId: ed0b389e16b1def4792f64a1b9f13af0
+    - name: dungeon_slime_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 3
+        y: 8
+        width: 26
+        height: 17
+      spriteId: 9ae4fe14e1756af4c8387f6570433ec1
+    - name: dungeon_slime_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 2
+        y: 7
+        width: 28
+        height: 19
+      spriteId: b8c8ca1c3b2b7f74abb384eeeaeee052
+    - name: dungeon_slime_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 2
+        y: 10
+        width: 28
+        height: 13
+      spriteId: a9e124e6ebf42304fb77234be382549c
+    - name: dungeon_slime_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 2
+        y: 10
+        width: 28
+        height: 2
+      spriteId: b22723df20eb99942a939d42c68cc79b
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 32, y: 32}

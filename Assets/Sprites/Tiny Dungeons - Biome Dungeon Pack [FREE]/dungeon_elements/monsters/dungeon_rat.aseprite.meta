@@ -1,0 +1,1175 @@
+fileFormatVersion: 2
+guid: 60f27fbe45a6d8143adc309d337c046a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: dungeon_rat_Frame_0
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 35
+      y: 45
+      width: 22
+      height: 9
+    spriteID: 803008015941fdb43b918faa9bebccda
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 35, y: 45}
+  - name: dungeon_rat_Frame_1
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 65
+      y: 45
+      width: 22
+      height: 9
+    spriteID: 4c0af99b9a42ef749828c754319f0237
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 65, y: 45}
+  - name: dungeon_rat_Frame_2
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 95
+      y: 45
+      width: 22
+      height: 9
+    spriteID: bf2b26999cd872c4c8d26fe737eeb13b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 95, y: 45}
+  - name: dungeon_rat_Frame_3
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 125
+      y: 45
+      width: 22
+      height: 9
+    spriteID: 400b2febf020e024591309aa90a93ddb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 125, y: 45}
+  - name: dungeon_rat_Frame_4
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 155
+      y: 45
+      width: 22
+      height: 9
+    spriteID: 24ef2d82a2a44ba4ab1db19a65c88a5a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 155, y: 45}
+  - name: dungeon_rat_Frame_5
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 185
+      y: 45
+      width: 22
+      height: 9
+    spriteID: b3ff8d9fb8eb3544989843dd71bcb612
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 185, y: 45}
+  - name: dungeon_rat_Frame_6
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 215
+      y: 45
+      width: 22
+      height: 9
+    spriteID: eaa3b32569a32be468e23956492d3296
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 215, y: 45}
+  - name: dungeon_rat_Frame_7
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 62
+      width: 22
+      height: 9
+    spriteID: 0630c9119192d2949bc35e5a1822246f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 62}
+  - name: dungeon_rat_Frame_8
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 62
+      width: 22
+      height: 9
+    spriteID: 4664984c1966d1349a796852b37d8389
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 62}
+  - name: dungeon_rat_Frame_9
+    originalName: 
+    pivot: {x: 0.5652174, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 223
+      y: 26
+      width: 23
+      height: 9
+    spriteID: 438be8a11f90823449e35c7250bb0900
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 223, y: 26}
+  - name: dungeon_rat_Frame_10
+    originalName: 
+    pivot: {x: 0.5652174, y: -1.375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 62
+      y: 79
+      width: 23
+      height: 8
+    spriteID: 0f64552b155dfe049992625fc3ba7a40
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 62, y: 79}
+  - name: dungeon_rat_Frame_11
+    originalName: 
+    pivot: {x: 0.6086957, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 45
+      width: 23
+      height: 9
+    spriteID: 9463678bc81cd5844ab0bbc6f5125bba
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 45}
+  - name: dungeon_rat_Frame_12
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 62
+      width: 22
+      height: 9
+    spriteID: 4b7c8b778b1413744a3c691ac4cd6fd2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 62}
+  - name: dungeon_rat_Frame_13
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 133
+      y: 26
+      width: 22
+      height: 10
+    spriteID: 22c4acd00fdf8844aada60f4039d3b22
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 133, y: 26}
+  - name: dungeon_rat_Frame_14
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 94
+      y: 62
+      width: 22
+      height: 9
+    spriteID: 780b311e40cad854392517d1ef9d3d18
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 94, y: 62}
+  - name: dungeon_rat_Frame_15
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 163
+      y: 26
+      width: 22
+      height: 10
+    spriteID: a92d4efe31d651047bc4c344f27b9dfd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 163, y: 26}
+  - name: dungeon_rat_Frame_16
+    originalName: 
+    pivot: {x: 0.5652174, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 4
+      width: 23
+      height: 11
+    spriteID: cf5dda977e73d3d49837abfe76455f04
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 4}
+  - name: dungeon_rat_Frame_17
+    originalName: 
+    pivot: {x: 0.5652174, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 4
+      width: 23
+      height: 11
+    spriteID: 2294cebb4f4698a4f84d8de16af5098c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 4}
+  - name: dungeon_rat_Frame_18
+    originalName: 
+    pivot: {x: 0.54545456, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 66
+      y: 26
+      width: 22
+      height: 11
+    spriteID: 226f9c4444428ba408db225e9f1e9799
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 66, y: 26}
+  - name: dungeon_rat_Frame_19
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 62
+      width: 22
+      height: 9
+    spriteID: 0c0ad2a07dc20014eb2be29479fc569b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 62}
+  - name: dungeon_rat_Frame_20
+    originalName: 
+    pivot: {x: 0.61904764, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 62
+      width: 21
+      height: 9
+    spriteID: 47eea50e18c2d8a408fd696a1f12fbf9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 62}
+  - name: dungeon_rat_Frame_21
+    originalName: 
+    pivot: {x: 0.5909091, y: -1.1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 193
+      y: 26
+      width: 22
+      height: 10
+    spriteID: 11784d97cf056cf4abade88da8c729aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 193, y: 26}
+  - name: dungeon_rat_Frame_22
+    originalName: 
+    pivot: {x: 0.5652174, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 26
+      width: 23
+      height: 11
+    spriteID: 613c676f7a89cad478fc80198b213c82
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 26}
+  - name: dungeon_rat_Frame_23
+    originalName: 
+    pivot: {x: 0.5416667, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 135
+      y: 4
+      width: 24
+      height: 11
+    spriteID: 4e7fbe468a2ee5b4e99d3d0df8f8b592
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 135, y: 4}
+  - name: dungeon_rat_Frame_24
+    originalName: 
+    pivot: {x: 0.5217391, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 35
+      y: 26
+      width: 23
+      height: 11
+    spriteID: e8ceaa8f5a2e7da45b3ec3aa5142f75f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 35, y: 26}
+  - name: dungeon_rat_Frame_25
+    originalName: 
+    pivot: {x: 0.5, y: -1.5714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 154
+      y: 62
+      width: 28
+      height: 7
+    spriteID: b99d00e66c052be4dbac5e9c803b8e91
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 154, y: 62}
+  - name: dungeon_rat_Frame_26
+    originalName: 
+    pivot: {x: 0.44827586, y: -1.375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 26
+      width: 29
+      height: 8
+    spriteID: 7dc762d1387cfb848a11ddef3a6dcc48
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 26}
+  - name: dungeon_rat_Frame_27
+    originalName: 
+    pivot: {x: 0.61904764, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 219
+      y: 62
+      width: 21
+      height: 9
+    spriteID: 5d36e1bfe2773274da86d3a4d9f71a9f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 219, y: 62}
+  - name: dungeon_rat_Frame_28
+    originalName: 
+    pivot: {x: 0.61904764, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 79
+      width: 21
+      height: 9
+    spriteID: 2d27207aa3b2c964c9ffd7c7584ce5cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 79}
+  - name: dungeon_rat_Frame_29
+    originalName: 
+    pivot: {x: 0.61904764, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 33
+      y: 79
+      width: 21
+      height: 9
+    spriteID: 112efdee338910c40b336ed4dae0a6be
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 33, y: 79}
+  - name: dungeon_rat_Frame_30
+    originalName: 
+    pivot: {x: 0.5909091, y: -0.8333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 167
+      y: 4
+      width: 22
+      height: 12
+    spriteID: 8272040c7d514db4ab3d6b343bdb6222
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 167, y: 4}
+  - name: dungeon_rat_Frame_31
+    originalName: 
+    pivot: {x: 0.5652174, y: -0.6428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 4
+      width: 23
+      height: 14
+    spriteID: 72ea6562c509cd74c9c6d20ed095b2f2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 4}
+  - name: dungeon_rat_Frame_32
+    originalName: 
+    pivot: {x: 0.5416667, y: -0.6428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 24
+      height: 14
+    spriteID: 31517d67519a46442a93cc5342a43454
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: dungeon_rat_Frame_33
+    originalName: 
+    pivot: {x: 0.53846157, y: -0.9166667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 67
+      y: 4
+      width: 26
+      height: 12
+    spriteID: ae4e06ed13587944ba900ec204ed026b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 67, y: 4}
+  - name: dungeon_rat_Frame_34
+    originalName: 
+    pivot: {x: 0.53846157, y: -0.9166667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 101
+      y: 4
+      width: 26
+      height: 12
+    spriteID: 8faafb3e6bb48024dba74d1055b0c273
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 101, y: 4}
+  - name: dungeon_rat_Frame_35
+    originalName: 
+    pivot: {x: 0.53846157, y: -2.3333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 93
+      y: 79
+      width: 26
+      height: 6
+    spriteID: e6931b29a8aae1e4193dfc1c8cf4c625
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 93, y: 79}
+  - name: dungeon_rat_Frame_36
+    originalName: 
+    pivot: {x: 14, y: -14}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 248
+      y: 62
+      width: 1
+      height: 1
+    spriteID: 70a5713355304534bb3fceef13601159
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 248, y: 62}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1170562592
+    name: dungeon_rat
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: dungeon_rat_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: 803008015941fdb43b918faa9bebccda
+    - name: dungeon_rat_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: 4c0af99b9a42ef749828c754319f0237
+    - name: dungeon_rat_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: bf2b26999cd872c4c8d26fe737eeb13b
+    - name: dungeon_rat_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: 400b2febf020e024591309aa90a93ddb
+    - name: dungeon_rat_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: 24ef2d82a2a44ba4ab1db19a65c88a5a
+    - name: dungeon_rat_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: b3ff8d9fb8eb3544989843dd71bcb612
+    - name: dungeon_rat_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: eaa3b32569a32be468e23956492d3296
+    - name: dungeon_rat_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: 0630c9119192d2949bc35e5a1822246f
+    - name: dungeon_rat_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: 4664984c1966d1349a796852b37d8389
+    - name: dungeon_rat_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 3
+        y: 11
+        width: 23
+        height: 9
+      spriteId: 438be8a11f90823449e35c7250bb0900
+    - name: dungeon_rat_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 3
+        y: 11
+        width: 23
+        height: 8
+      spriteId: 0f64552b155dfe049992625fc3ba7a40
+    - name: dungeon_rat_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 2
+        y: 11
+        width: 23
+        height: 9
+      spriteId: 9463678bc81cd5844ab0bbc6f5125bba
+    - name: dungeon_rat_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: 4b7c8b778b1413744a3c691ac4cd6fd2
+    - name: dungeon_rat_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 10
+      spriteId: 22c4acd00fdf8844aada60f4039d3b22
+    - name: dungeon_rat_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: 780b311e40cad854392517d1ef9d3d18
+    - name: dungeon_rat_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 10
+      spriteId: a92d4efe31d651047bc4c344f27b9dfd
+    - name: dungeon_rat_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 3
+        y: 11
+        width: 23
+        height: 11
+      spriteId: cf5dda977e73d3d49837abfe76455f04
+    - name: dungeon_rat_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 3
+        y: 11
+        width: 23
+        height: 11
+      spriteId: 2294cebb4f4698a4f84d8de16af5098c
+    - name: dungeon_rat_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 4
+        y: 11
+        width: 22
+        height: 11
+      spriteId: 226f9c4444428ba408db225e9f1e9799
+    - name: dungeon_rat_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 9
+      spriteId: 0c0ad2a07dc20014eb2be29479fc569b
+    - name: dungeon_rat_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 3
+        y: 11
+        width: 21
+        height: 9
+      spriteId: 47eea50e18c2d8a408fd696a1f12fbf9
+    - name: dungeon_rat_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 3
+        y: 11
+        width: 22
+        height: 10
+      spriteId: 11784d97cf056cf4abade88da8c729aa
+    - name: dungeon_rat_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 3
+        y: 11
+        width: 23
+        height: 11
+      spriteId: 613c676f7a89cad478fc80198b213c82
+    - name: dungeon_rat_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 3
+        y: 11
+        width: 24
+        height: 11
+      spriteId: 4e7fbe468a2ee5b4e99d3d0df8f8b592
+    - name: dungeon_rat_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 4
+        y: 11
+        width: 23
+        height: 11
+      spriteId: e8ceaa8f5a2e7da45b3ec3aa5142f75f
+    - name: dungeon_rat_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 2
+        y: 11
+        width: 28
+        height: 7
+      spriteId: b99d00e66c052be4dbac5e9c803b8e91
+    - name: dungeon_rat_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 3
+        y: 11
+        width: 29
+        height: 8
+      spriteId: 7dc762d1387cfb848a11ddef3a6dcc48
+    - name: dungeon_rat_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 3
+        y: 11
+        width: 21
+        height: 9
+      spriteId: 5d36e1bfe2773274da86d3a4d9f71a9f
+    - name: dungeon_rat_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 3
+        y: 11
+        width: 21
+        height: 9
+      spriteId: 2d27207aa3b2c964c9ffd7c7584ce5cb
+    - name: dungeon_rat_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 3
+        y: 11
+        width: 21
+        height: 9
+      spriteId: 112efdee338910c40b336ed4dae0a6be
+    - name: dungeon_rat_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 3
+        y: 10
+        width: 22
+        height: 12
+      spriteId: 8272040c7d514db4ab3d6b343bdb6222
+    - name: dungeon_rat_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 3
+        y: 9
+        width: 23
+        height: 14
+      spriteId: 72ea6562c509cd74c9c6d20ed095b2f2
+    - name: dungeon_rat_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 3
+        y: 9
+        width: 24
+        height: 14
+      spriteId: 31517d67519a46442a93cc5342a43454
+    - name: dungeon_rat_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 2
+        y: 11
+        width: 26
+        height: 12
+      spriteId: ae4e06ed13587944ba900ec204ed026b
+    - name: dungeon_rat_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 2
+        y: 11
+        width: 26
+        height: 12
+      spriteId: 8faafb3e6bb48024dba74d1055b0c273
+    - name: dungeon_rat_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 2
+        y: 14
+        width: 26
+        height: 6
+      spriteId: e6931b29a8aae1e4193dfc1c8cf4c625
+    - name: dungeon_rat_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: 2
+        y: 14
+        width: 1
+        height: 1
+      spriteId: 70a5713355304534bb3fceef13601159
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 32, y: 32}
