@@ -57,6 +57,7 @@ public class ChargerEnemy : EnemyBase
 
             case ChargeState.Charging:
                 UpdateChargingState();
+                AttackCheck(Time.deltaTime);
                 break;
         }
 
