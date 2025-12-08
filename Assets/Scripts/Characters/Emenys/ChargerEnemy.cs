@@ -44,6 +44,8 @@ public class ChargerEnemy : EnemyBase
     {
         if (!IsActive) return;
 
+        UpdateBuffState(Time.deltaTime);
+
         // 상태별 업데이트
         switch (currentState)
         {
@@ -167,11 +169,16 @@ public class ChargerEnemy : EnemyBase
         base.MoveCheck(deltaTime);
     }
 
+    bool hasHitPlayer = false;
+
     protected override void AttackCheck(float deltaTime)
     {
         // 돌진 중에만 충돌 공격
         if (currentState == ChargeState.Charging)
         {
+            // 이미 플레이어를 타격했으면 추가 타격 없음 (관통)
+            if (hasHitPlayer) return;
+
             // 플레이어 충돌 체크
             Collider2D playerColl = Physics2D.OverlapCircle(
                 CenterPos,
@@ -188,8 +195,8 @@ public class ChargerEnemy : EnemyBase
                 // 넉백
                 //Player.Knockback(chargeDirection * 5f);
 
-                // 돌진 종료
-                EndCharge();
+                // 타격 플래그 설정 (돌진은 계속됨)
+                hasHitPlayer = true;
             }
         }
         else
