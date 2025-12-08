@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 2562940045570004327}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 1aa99de150659aa4dab7ba001d1ee4b9, type: 2}
+  m_Controller: {fileID: 22100000, guid: 55a72700126704d478e21a2b948de8a7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -240,8 +240,10 @@ MonoBehaviour:
   attackFrequency: 1
   triggerRange: 1.5
   explosionRadius: 2.5
+  explosionDamage: 5
+  fuseTime: 1
   explosionEffectPrefab: {fileID: 0}
-  projectilePrefab: {fileID: 2649885531228156523, guid: c5a2b5d73d593e3469ac743a5b6f670d, type: 3}
+  projectilePrefab: {fileID: 8205914113856974317, guid: c5a2b5d73d593e3469ac743a5b6f670d, type: 3}
   projectileCount: 8
   projectileSpeed: 3
   projectileDamage: 2
