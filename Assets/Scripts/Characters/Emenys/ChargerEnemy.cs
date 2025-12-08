@@ -186,7 +186,7 @@ public class ChargerEnemy : EnemyBase
                 Player.TakeDamage(hitPoint, chargeDamage);
                 
                 // 넉백
-                Player.Knockback(chargeDirection * 5f);
+                //Player.Knockback(chargeDirection * 5f);
 
                 // 돌진 종료
                 EndCharge();
