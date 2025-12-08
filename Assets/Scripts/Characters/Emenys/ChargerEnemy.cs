@@ -126,14 +126,11 @@ public class ChargerEnemy : EnemyBase
         // 돌진 방향 고정 (현재 플레이어 위치)
         chargeDirection = (Player.transform.position - transform.position).normalized;
 
-        // 경고 표시
-        if (warningIndicator != null)
-        {
-            warningIndicator.SetActive(true);
-        }
-
         // 플레이어 바라보기
         LookAtPlayer();
+
+        // 공통 경고 시퀀스 실행
+        StartCoroutine(WarningSequence(chargeDelay));
     }
 
     void StartCharge()
@@ -141,12 +138,6 @@ public class ChargerEnemy : EnemyBase
         currentState = ChargeState.Charging;
         stateTimer = chargeDuration;
         moveSpeed = chargeSpeed;
-
-        // 경고 숨김
-        if (warningIndicator != null)
-        {
-            warningIndicator.SetActive(false);
-        }
     }
 
     void EndCharge()

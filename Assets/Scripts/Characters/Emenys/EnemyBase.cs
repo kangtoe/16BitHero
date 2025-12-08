@@ -228,6 +228,34 @@ public class EnemyBase : CharacterBase
         characterCollider.enabled = visible;
     }
 
+    protected virtual IEnumerator WarningSequence(float duration)
+    {
+        return WarningSequence(duration, Color.red);
+    }
+
+    protected virtual IEnumerator WarningSequence(float duration, Color blinkColor)
+    {
+        if (warningIndicator != null)
+            warningIndicator.SetActive(true);
+
+        float elapsed = 0f;
+        Color originalColor = characterSprite.color;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            // 기본 점멸 효과 (일정 속도)
+            float t = Mathf.PingPong(elapsed * 10f, 1f);
+            characterSprite.color = Color.Lerp(originalColor, blinkColor, t);
+            yield return null;
+        }
+
+        characterSprite.color = originalColor;
+
+        if (warningIndicator != null)
+            warningIndicator.SetActive(false);
+    }
+
     protected virtual void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
