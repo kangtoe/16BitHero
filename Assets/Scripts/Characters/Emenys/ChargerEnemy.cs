@@ -36,7 +36,7 @@ public class ChargerEnemy : EnemyBase
         // 경고 인디케이터 초기화
         if (warningIndicator != null)
         {
-            warningIndicator.SetActive(false);
+            warningIndicator.gameObject.SetActive(false);
         }
     }
 
@@ -102,7 +102,7 @@ public class ChargerEnemy : EnemyBase
         // 돌진 속도 계산 (마지막 0.3초 동안 감속)
         float currentSpeed = chargeSpeed;
         float decelerationTime = 0.3f;
-        
+
         if (stateTimer < decelerationTime)
         {
             // 감속: chargeSpeed → originalMoveSpeed
@@ -184,7 +184,7 @@ public class ChargerEnemy : EnemyBase
                 // 플레이어 공격
                 Vector2 hitPoint = characterCollider.ClosestPoint(Player.CharacterCollider.bounds.center);
                 Player.TakeDamage(hitPoint, chargeDamage);
-                
+
                 // 넉백
                 //Player.Knockback(chargeDirection * 5f);
 

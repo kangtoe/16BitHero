@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class EnemyBase : CharacterBase
@@ -19,7 +20,7 @@ public class EnemyBase : CharacterBase
     protected bool hasSpawned = true; // true for debug
 
     [Header("Warning System")]
-    [SerializeField] protected GameObject warningIndicator; // '!' 스프라이트
+    [SerializeField] protected Text warningIndicator; // '!' 스프라이트
     [SerializeField] protected float warningDelay = 0.5f; // 경고를 표시할 쿨다운 임계값 (초)
     protected float warningTimer = 0f;
     protected bool isAttacking = false; // 경고 중이거나 발사 중
@@ -46,7 +47,7 @@ public class EnemyBase : CharacterBase
         CurrHealth = maxHealth;
 
         if (warningIndicator != null)
-            warningIndicator.SetActive(false);
+            warningIndicator.gameObject.SetActive(false);
 
         // 아웃라인 머티리얼 설정
         if (characterSprite != null)
@@ -236,7 +237,10 @@ public class EnemyBase : CharacterBase
     protected virtual IEnumerator WarningSequence(float duration, Color blinkColor)
     {
         if (warningIndicator != null)
-            warningIndicator.SetActive(true);
+        {
+            warningIndicator.gameObject.SetActive(true);
+            warningIndicator.color = blinkColor;
+        }
 
         float elapsed = 0f;
         Color originalColor = characterSprite.color;
@@ -253,7 +257,7 @@ public class EnemyBase : CharacterBase
         characterSprite.color = originalColor;
 
         if (warningIndicator != null)
-            warningIndicator.SetActive(false);
+            warningIndicator.gameObject.SetActive(false);
     }
 
     protected virtual void OnDrawGizmosSelected()

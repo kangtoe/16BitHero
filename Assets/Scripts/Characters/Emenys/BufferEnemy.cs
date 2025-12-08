@@ -22,18 +22,18 @@ public class BufferEnemy : EnemyBase
         base.Start();
         // 초기 이동속도 설정
         moveSpeed = 1.2f;
-        
+
         // 시작 시 약간의 딜레이를 두고 시작 (스폰되자마자 쏘지 않게)
         buffTimer = buffRefreshRate;
-        
+
         if (warningIndicator != null)
-            warningIndicator.SetActive(false);
+            warningIndicator.gameObject.SetActive(false);
     }
 
     protected override void Update()
     {
         base.Update();
-        
+
         // 버프 사이클 업데이트
         UpdateBuffCycle(Time.deltaTime);
     }
@@ -56,7 +56,7 @@ public class BufferEnemy : EnemyBase
         else if (buffTimer <= 0f)
         {
             ApplyBuffToNeighbors();
-            
+
             // 타이머 리셋 및 경고 플래그 초기화
             buffTimer = buffRefreshRate;
             isWarningShown = false;

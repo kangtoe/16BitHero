@@ -18,7 +18,7 @@ public class RangedEnemy : EnemyBase
         // 경고 인디케이터 초기화
         if (warningIndicator != null)
         {
-            warningIndicator.SetActive(false);
+            warningIndicator.gameObject.SetActive(false);
         }
     }
 
@@ -49,7 +49,7 @@ public class RangedEnemy : EnemyBase
         // 경고 표시
         if (warningIndicator != null)
         {
-            warningIndicator.SetActive(true);
+            warningIndicator.gameObject.SetActive(true);
         }
 
         // 경고 시간 대기
@@ -58,7 +58,7 @@ public class RangedEnemy : EnemyBase
         // 경고 숨김
         if (warningIndicator != null)
         {
-            warningIndicator.SetActive(false);
+            warningIndicator.gameObject.SetActive(false);
         }
 
         // 발사

@@ -130,7 +130,6 @@ MonoBehaviour:
   characterCollider: {fileID: 5575714176990837295}
   animator: {fileID: 0}
   characterSprite: {fileID: 0}
-  outlineSprites: []
   maxHealth: 10
   healthBar: {fileID: 0}
   healthText: {fileID: 0}
@@ -141,17 +140,28 @@ MonoBehaviour:
   potionDropAmount: 0
   diamondDropAmount: 0
   spawnIndicator: {fileID: 2975969661022248270, guid: 9177aa0459ab4054f84c8aac9c5df7b0, type: 3}
+  warningIndicator: {fileID: 3810347468025550316}
+  warningDelay: 0.5
+  meleeAttackRange: 0.45
+  meleeAttackAreaOffset: {x: 0, y: 0}
   damage: 1
   attackFrequency: 1
-  attackRange: 0.45
-  attackAreaOffset: {x: 0, y: 0}
-  warningIndicator: {fileID: 8223609625927231947}
-  warningDelay: 0.5
+  rangedAttackRange: 5
   bulletPrefab: {fileID: 2649885531228156523, guid: c5a2b5d73d593e3469ac743a5b6f670d, type: 3}
   firePoint: {fileID: 8871537769279219813}
   bulletSpeed: 3
   bulletDamage: 2
-  bulletKnockback: 0
+--- !u!114 &3810347468025550316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5730959957216127275, guid: 0b22f3994d8cefe4d85e3f09e1277fec, type: 3}
+  m_PrefabInstance: {fileID: 8892752610120056007}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4423227726413154496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5047146827663668231, guid: 0b22f3994d8cefe4d85e3f09e1277fec, type: 3}
@@ -160,10 +170,5 @@ Transform:
 --- !u!70 &5575714176990837295 stripped
 CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 3893799357744924392, guid: 0b22f3994d8cefe4d85e3f09e1277fec, type: 3}
-  m_PrefabInstance: {fileID: 8892752610120056007}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8223609625927231947 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 669142986751350028, guid: 0b22f3994d8cefe4d85e3f09e1277fec, type: 3}
   m_PrefabInstance: {fileID: 8892752610120056007}
   m_PrefabAsset: {fileID: 0}
