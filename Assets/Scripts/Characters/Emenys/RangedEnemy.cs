@@ -11,25 +11,9 @@ public class RangedEnemy : EnemyBase
     [SerializeField] protected float bulletSpeed = 3.0f;
     [SerializeField] protected int bulletDamage = 2;
 
-    ObjectPool<Bullet> bulletPool;
-
     protected override void Start()
     {
         base.Start();
-
-        // 총알 풀 초기화
-        bulletPool = new ObjectPool<Bullet>(
-            createFunc: () =>
-            {
-                Bullet bullet = Instantiate(bulletPrefab);
-                bullet.SetBulletPool(bulletPool);
-                bullet.gameObject.SetActive(false);
-                return bullet;
-            },
-            actionOnGet: bullet => bullet.gameObject.SetActive(true),
-            actionOnRelease: bullet => bullet.gameObject.SetActive(false),
-            actionOnDestroy: bullet => Destroy(bullet.gameObject)
-        );
 
         // 경고 인디케이터 초기화
         if (warningIndicator != null)
@@ -87,14 +71,13 @@ public class RangedEnemy : EnemyBase
 
     protected override void Attack()
     {
-        if (Player == null || bulletPool == null) return;
+        if (Player == null) return;
 
         // 플레이어 방향 계산
         Vector2 direction = (Player.CenterPos - (Vector2)firePoint.position).normalized;
 
         // 총알 생성 및 발사
-        Bullet bullet = bulletPool.Get();
-        bullet.transform.position = firePoint.position;
+        Bullet bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         bullet.Init(
             targetMask: 1 << Player.gameObject.layer,
             damage: bulletDamage,

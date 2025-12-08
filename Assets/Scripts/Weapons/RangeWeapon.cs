@@ -31,36 +31,7 @@ public class RangeWeapon : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
-        Bullet CreateBullet()
-        {
-            Bullet bullet = Instantiate(bulletPrefab);
-            bullet.SetBulletPool(bulletPool);
-            bullet.gameObject.SetActive(false);
-            return bullet;
-        }
-
-        void OnGetBullet(Bullet bullet)
-        {
-            //bullet.Reload();            
-            bullet.gameObject.SetActive(true);
-        }
-
-        void OnReleaseBullet(Bullet bullet)
-        {
-            bullet.gameObject.SetActive(false);
-        }
-
-        void OnDestroyBullet(Bullet bullet)
-        {
-            Destroy(bullet.gameObject);
-        }
-
-        bulletPool = new ObjectPool<Bullet>(
-            CreateBullet,
-            OnGetBullet,
-            OnReleaseBullet,
-            OnDestroyBullet
-        );
+        currentMagazine = magazineSize;
     }
 
     protected override void Update()
@@ -100,8 +71,7 @@ public class RangeWeapon : WeaponBase
     {
         int damage = GetDamage(out bool isCriticalHit);
 
-        Bullet bullet = bulletPool.Get();
-        bullet.transform.position = firePoint.position;
+        Bullet bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         bullet.Init(
             targetMask,
             damage,

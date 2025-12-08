@@ -27,11 +27,6 @@ public class Bullet : MonoBehaviour
         projectileCollider = GetComponent<Collider2D>();
     }
 
-    public void SetBulletPool(ObjectPool<Bullet> pool)
-    {
-        this.pool = pool;
-    }
-
     public void Init(LayerMask targetMask, int damage, float knockback, Vector2 direction, float moveSpeed, bool isCriticalHit)
     {
         this.targetMask = targetMask;
@@ -41,13 +36,12 @@ public class Bullet : MonoBehaviour
         rig.velocity = direction * moveSpeed;
         this.isCriticalHit = isCriticalHit;
 
-        this.isReleased = false;
         this.isHit = false;
-        gameObject.SetActive(this);
+        gameObject.SetActive(true);
         projectileCollider.enabled = true;
 
         // lifetime 설정           
-        Invoke(nameof(ReturnToPool), lifetime);
+        Invoke(nameof(SelfDestroy), lifetime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -65,15 +59,12 @@ public class Bullet : MonoBehaviour
         }
         projectileCollider.enabled = false;
 
-        ReturnToPool();        
+        SelfDestroy();        
     }
 
-    public void ReturnToPool()
+    public void SelfDestroy()
     {        
-        if (isReleased) return;        
-        isReleased = true;      
-          
-        CancelInvoke(nameof(ReturnToPool));
-        pool.Release(this);
+        CancelInvoke(nameof(SelfDestroy));
+        Destroy(gameObject);
     }
 }
